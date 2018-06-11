@@ -1,0 +1,6 @@
+framework module NaturalVoice {
+  umbrella header "NaturalVoice-umbrella.h"
+
+  export *
+  module * { export * }
+}
