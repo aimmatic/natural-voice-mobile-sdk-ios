@@ -74,7 +74,7 @@ open class AudioLanguageManager {
     
     open func getLanguage(bcp47Code: String) -> AudioLanguage? {
         let languages = self.languages.filter({
-            $0.bcp47Code.lowercased() == bcp47Code || $0.langCode.lowercased() == bcp47Code
+            $0.bcp47Code.lowercased() == bcp47Code.lowercased() || $0.langCode.lowercased() == bcp47Code.lowercased()
         })
         if let language = languages.first {
             return language
