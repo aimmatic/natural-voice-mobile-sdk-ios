@@ -44,6 +44,12 @@ Natural Voice requires location service and microphone permission, you need to a
 
 ## Using Voice Service ##
 
+Get supported languages
+
+```languages
+let supportedLanguages = AudioLanguageManager.shared.supportLanguages
+```
+
 Configuration
 
 ```configuration
