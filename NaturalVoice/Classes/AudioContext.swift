@@ -9,5 +9,5 @@ struct AudioContext {
     
     static let sampleRate: Int = 16000
     static let bitRate: Int = 16
-    static let channel: Int = 2
+    static let channel: Int = 1
 }
