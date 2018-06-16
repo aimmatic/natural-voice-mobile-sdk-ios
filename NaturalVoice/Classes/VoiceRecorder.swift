@@ -7,9 +7,9 @@
 
 import AVFoundation
 
-public typealias VoiceRecordStart = ((VoiceFileMeta?) -> Void)
-public typealias VoiceRecordEnd = ((VoiceRecordEndResponse?) -> Void)
-public typealias VoiceRecordError = ((Error?) -> Void)
+public typealias VoiceRecordStarted = ((VoiceFileMeta?) -> Void)
+public typealias VoiceRecordEnded = ((VoiceRecordEndResponse?) -> Void)
+public typealias VoiceRecordFailed = ((Error?) -> Void)
 public typealias VoiceRecordSent = ((VoiceRecordSendResponse?) -> Void)
 
 open class VoiceRecorder: NSObject {
@@ -17,9 +17,9 @@ open class VoiceRecorder: NSObject {
     fileprivate static let instance = VoiceRecorder()
     fileprivate var counter = VoiceCounter.shared
     fileprivate var locationService = VoiceLocationManager.shared
-    fileprivate var recordStarted: VoiceRecordStart?
-    fileprivate var recordEnded: VoiceRecordEnd?
-    fileprivate var recordFailed: VoiceRecordError?
+    fileprivate var recordStarted: VoiceRecordStarted?
+    fileprivate var recordEnded: VoiceRecordEnded?
+    fileprivate var recordFailed: VoiceRecordFailed?
     fileprivate var recordSent: VoiceRecordSent?
     fileprivate var audioMeta: VoiceFileMeta!
     fileprivate var recordSettings: [String: Any]!
@@ -51,7 +51,7 @@ open class VoiceRecorder: NSObject {
                                AVSampleRateKey: self.audioMeta.sampleRate]
     }
     
-    open func startRecording(recordStarted: VoiceRecordStart?, recordEnded: VoiceRecordEnd?, recordSent: VoiceRecordSent?, recordFailed: VoiceRecordError?) {
+    open func startRecording(recordStarted: VoiceRecordStarted?, recordEnded: VoiceRecordEnded?, recordSent: VoiceRecordSent?, recordFailed: VoiceRecordFailed?) {
         self.recordStarted = recordStarted
         self.recordEnded = recordEnded
         self.recordSent = recordSent

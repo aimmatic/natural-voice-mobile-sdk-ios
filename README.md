@@ -66,10 +66,6 @@ VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
 }, recordEnded: { response in
 
-//called when audio recording is stopped by user or max-duration timeout. this will return `VoiceRecordEndResponse`
-
-
-
 }, recordSent: { response in
 
 }, recordFailed: { error in
@@ -79,35 +75,35 @@ VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
 ### Block handle ###
 
-Record stated
+When recording is started
 
 ```recordStarted
-recordStarted: { (meta: VoiceFileMeta?) in 
+let recordStared: VoiceRecordStarted = { (meta: VoiceFileMeta?) in
 
 }
 ```
 
-Record ended
+When recording is finished
 
 ```recordEnded
-recordEnded: { (response: VoiceRecordEndResponse?) in 
-
+let recordEnded: VoiceRecordEnded = { (response: VoiceRecordEndResponse?) in
+            
 }
 ```
 
-Record sent
+When recording is sent
 
 ```recordSent
-recordSent: { (response: VoiceRecordSendResponse?) in 
-
+let recordSent: VoiceRecordSent = { (response: VoiceRecordSendResponse?) in
+            
 }
 ```
 
-Record failed
+When recording is failed
 
 ```recordFailed
-recordFailed: { (error: Error?) in 
-
+let recordFailed: VoiceRecordFailed = { (error: Error?) in
+            
 }
 ```
 
@@ -117,9 +113,11 @@ Handle policy `.userChoice` when recording is finished
 if response!.policy == .userChoice {
     let controller = UIAlertController(title: "Send or Abort?", message: nil, preferredStyle: .alert)
     controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { a in
+        //Send recorded file
         response?.send()
     }))
     controller.addAction(UIAlertAction(title: "Abort", style: .cancel, handler: { a in
+        //Abort sending recorded file
         response?.abort()
     }))
     self.present(controller, animated: true, completion: {})             
