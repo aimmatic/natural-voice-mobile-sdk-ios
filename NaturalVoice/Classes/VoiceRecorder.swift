@@ -8,102 +8,163 @@
 import AVFoundation
 
 public typealias VoiceRecordStart = ((VoiceFileMeta?) -> Void)
-public typealias VoiceRecordEnd = ((VoiceRecordEndState?) -> Void)
+public typealias VoiceRecordEnd = ((VoiceRecordEndResponse?) -> Void)
 public typealias VoiceRecordError = ((Error?) -> Void)
-public typealias VoiceRecordSent = ((VoiceRecordResponse?) -> Void)
+public typealias VoiceRecordSent = ((VoiceRecordSendResponse?) -> Void)
 
 open class VoiceRecorder: NSObject {
     
     fileprivate static let instance = VoiceRecorder()
-    fileprivate var start: VoiceRecordStart?
-    fileprivate var end: VoiceRecordEnd?
-    fileprivate var failed: VoiceRecordError?
-    fileprivate var sent: VoiceRecordSent?
-    fileprivate var endState: VoiceRecordEndState?
-    fileprivate var audioMeta: VoiceFileMeta?
     fileprivate var counter = VoiceCounter.shared
     fileprivate var locationService = VoiceLocationManager.shared
-    var recorder: AVAudioRecorder!
-    var audioFile: VoiceFile!
+    fileprivate var recordStarted: VoiceRecordStart?
+    fileprivate var recordEnded: VoiceRecordEnd?
+    fileprivate var recordFailed: VoiceRecordError?
+    fileprivate var recordSent: VoiceRecordSent?
+    fileprivate var audioMeta: VoiceFileMeta!
+    fileprivate var recordSettings: [String: Any]!
+    fileprivate var recorder: AVAudioRecorder!
+    fileprivate var audioFile: VoiceFile!
     
     open static var shared: VoiceRecorder {
         return self.instance
     }
     
-    open func startRecording(start: VoiceRecordStart?, end: VoiceRecordEnd?, sent: VoiceRecordSent?, failed: VoiceRecordError?) {
-        self.start = start
-        self.end = end
-        self.sent = sent
-        self.failed = failed
+    public override init() {
+        super.init()
+        
+        let messageDuration = "Record duration must not be longer than \(VoiceResource.maxDuration)"
+        assert(VoiceRecordStrategy.maxRecordDuration <= VoiceResource.maxDuration , messageDuration)
+        let messageApiKey = "Invalid api key"
+        assert(VoiceRecordStrategy.apiKey != "", messageApiKey)
+        let messageLanguage = "Language not set"
+        assert(VoiceRecordStrategy.language != nil, messageLanguage)
+        
+        self.audioMeta = VoiceFileMeta()
+        self.audioMeta.bitRate = VoiceMeta.bitRate
+        self.audioMeta.sampleRate = VoiceMeta.sampleRate
+        self.audioMeta.channels = VoiceMeta.channel
+        self.recordSettings = [AVFormatIDKey: kAudioFormatLinearPCM,
+                               AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
+                               AVEncoderBitRateKey: self.audioMeta.bitRate,
+                               AVNumberOfChannelsKey: self.audioMeta.channels,
+                               AVSampleRateKey: self.audioMeta.sampleRate]
+    }
+    
+    open func startRecording(recordStarted: VoiceRecordStart?, recordEnded: VoiceRecordEnd?, recordSent: VoiceRecordSent?, recordFailed: VoiceRecordError?) {
+        self.recordStarted = recordStarted
+        self.recordEnded = recordEnded
+        self.recordSent = recordSent
+        self.recordFailed = recordFailed
         if nil == self.recorder {
             self.setupRecordSession()
             self.setupRecorder()
-        } else {
-            if true == self.recorder.isRecording {
-                self.stopRecording(state: .endByUser)
-            }
         }
     }
     
-    open func stopRecording(state: VoiceRecordEndState) {
-        if nil != self.recorder && false != self.recorder.isRecording {
-            self.endState = state
-            self.recorder.stop()
-            self.counter.stopCounting()
-            let session = AVAudioSession.sharedInstance()
-            do {
-                try session.setActive(false)
-            } catch { }
-        }
+    open func stopRecording(policy: VoicePolicy) {
+        print("Record stop by policy")
+        self.eeennd(state: .endByUser, policy: policy)
     }
     
     fileprivate func setupRecordSession() {
+        print("Setup sesssion")
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(AVAudioSessionCategoryRecord)
-        } catch {
-            self.failed?(error)
-        }
-        do {
             try session.setActive(true)
         } catch {
-            self.failed?(error)
+            self.recordFailed?(error)
         }
     }
     
     fileprivate func setupRecorder() {
-        self.audioMeta = VoiceFileMeta(sampleRate: VoiceMeta.sampleRate,
-                                   channels: VoiceMeta.channel,
-                                   bitRate: VoiceMeta.bitRate)
-        let settings: [String: Any] = [
-            AVFormatIDKey: kAudioFormatLinearPCM,
-            AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
-            AVEncoderBitRateKey: self.audioMeta!.bitRate,
-            AVNumberOfChannelsKey: self.audioMeta!.channels,
-            AVSampleRateKey: self.audioMeta!.sampleRate
-        ]
+        print("Setup recorder")
+        self.audioFile = VoiceFile(audioType: .audioWave)
         do {
-            self.audioFile = VoiceFile(audioType: .audioWave)
-            self.recorder = try AVAudioRecorder(url: self.audioFile.fileUrl, settings: settings)
+            self.recorder = try AVAudioRecorder(url: self.audioFile.fileUrl, settings: self.recordSettings)
             self.recorder.delegate = self
             self.recorder.isMeteringEnabled = false
             self.recorder.prepareToRecord()
             self.recorder.record()
-            self.start?(self.audioMeta)
-            self.counter.completedCount = {
-                self.stopRecording(state: .endByMax)
-            }
-            self.counter.startCounting()
+            self.start()
         } catch {
             self.recorder = nil
-            self.failed?(error)
+            self.recordFailed?(error)
         }
     }
     
-    fileprivate func sendVoice() {
+    fileprivate func start() {
+        print("Start recording")
+        self.recordStarted?(self.audioMeta)
+        self.counter.completedCount = {
+            self.eeennd(state: .endByMax, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
+        }
+        self.counter.start()
+    }
+    
+    fileprivate func eeennd(state: VoiceEndState, policy: VoicePolicy) {
+        print("Record end")
+        guard let recorder = self.recorder else { return }
+        guard true == recorder.isRecording else { return }
+        self.recorder.stop()
+        self.counter.stop()
+        let session = AVAudioSession.sharedInstance()
+        do { try session.setActive(false) } catch { }
+        let response = VoiceRecordEndResponse(state: state, policy: policy, onSend: {
+            print("User choice: send")
+            self.sendFile()
+        }, onAbort: {
+            print("User choice: abort")
+            self.removeFile(url: self.audioFile.fileUrl)
+        })
+        self.recordEnded?(response)
+        switch policy {
+        case .userChoice:
+            print("policy user choise")
+            //do nothing
+            break
+        case .sendImmediately:
+            print("policy user send immediately")
+            self.sendFile()
+            break
+        case .cancel:
+            print("policy user cancel")
+            self.removeFile(url: self.audioFile.fileUrl)
+            break
+        }
+    }
+
+    fileprivate func sendFile() {
+        print("Start sending file")
         let location = self.locationService.location
         let sender = VoiceSender()
-        sender.sendVoice(file: self.audioFile, loc: location, meta: self.audioMeta!, sent: self.sent)
+        sender.sendFile(file: self.audioFile, loc: location, meta: self.audioMeta) { data, error in
+            if let error = error {
+                print("Sending file failed")
+                self.removeFile(url: self.audioFile.fileUrl)
+                let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
+                let status = VoiceRecordSendStatus.failure
+                let response = VoiceRecordSendResponse(result: result, status: status, error: error)
+                self.recordSent?(response)
+            } else {
+                print("Sending file success")
+                self.removeFile(url: self.audioFile.fileUrl)
+                let result = VoiceRecordSendResult(message: "Success", data: data)
+                let status = VoiceRecordSendStatus.success
+                let response = VoiceRecordSendResponse(result: result, status: status, error: nil)
+                self.recordSent?(response)
+            }
+        }
+    }
+    
+    fileprivate func removeFile(url: URL) {
+        print("Remove file")
+        if true == FileManager.default.fileExists(atPath: url.path) {
+            do {
+                try FileManager.default.removeItem(atPath: url.path)
+            } catch { }
+        }
     }
 }
 
@@ -111,11 +172,10 @@ extension VoiceRecorder: AVAudioRecorderDelegate {
     
     public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         self.recorder = nil
-        self.end?(self.endState)
-        self.sendVoice()
     }
     
     public func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        self.failed?(error)
+        self.recordFailed?(error)
+        print("Recording failed")
     }
 }

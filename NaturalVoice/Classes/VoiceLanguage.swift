@@ -6,7 +6,6 @@
 //
 
 public struct VoiceLanguage {
-    
     public var displayLang: String
     public var langEn: String
     public var bcp47Code: String

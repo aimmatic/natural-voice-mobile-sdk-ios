@@ -1,11 +1,11 @@
 //
-//  VoiceRecordResponseStatus.swift
+//  VoiceRecordSendStatus.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
 //
 
-public enum VoiceRecordResponseStatus {
+public enum VoiceRecordSendStatus {
     case success
     case failure
 }

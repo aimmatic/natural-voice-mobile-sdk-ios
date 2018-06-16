@@ -6,7 +6,6 @@
 //
 
 public struct VoiceFileMeta {
-
     public var sampleRate: Int = VoiceMeta.sampleRate
     public var channels: Int = VoiceMeta.channel
     public var bitRate: Int = VoiceMeta.bitRate

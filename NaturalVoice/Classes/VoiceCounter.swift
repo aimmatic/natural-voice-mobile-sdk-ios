@@ -16,21 +16,17 @@ class VoiceCounter {
         return self.instance
     }
     
-    func startCounting() {
-        self.stopCounting()
-        self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(self.counting(timer:)), userInfo: nil, repeats: false)
+    func start() {
+        self.stop()
+        self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(self.count(timer:)), userInfo: nil, repeats: false)
     }
     
-    @objc func counting(timer: Timer) {
-        self.stopCounting()
-        if let completedCount = self.completedCount {
-            completedCount()
-        }
+    @objc func count(timer: Timer) {
+        self.stop()
+        self.completedCount?()
     }
     
-    func stopCounting() {
-        if let timer = self.timer {
-            timer.invalidate()
-        }
+    func stop() {
+        self.timer?.invalidate()
     }
 }

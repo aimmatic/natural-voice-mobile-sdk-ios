@@ -6,8 +6,8 @@
 //
 
 struct VoiceResource {
-    
-    static let host: String = "https://api.aimmatic.com"
+    static let maxDuration: TimeInterval = 60
+    static let host: String = "http://api.aimmatic.info"
     static let apiVersion: String = "/v1"
     static let naturalVoice: String = "/insights/UploadAudio"
     static let naturalVoiceLanguage: String = "/insights/langs"

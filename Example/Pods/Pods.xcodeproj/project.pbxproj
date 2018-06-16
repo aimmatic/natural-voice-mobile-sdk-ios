@@ -82,19 +82,20 @@
 		8D421B296EA8AAD495FD21AC43E81177 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = A963491119E6DE1D74B7091190D6A49A /* QCKDSL.m */; };
 		8F32F31120CCE1DD00149C7A /* VoiceResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31020CCE1DD00149C7A /* VoiceResource.swift */; };
 		8F32F31320CD0AA900149C7A /* VoiceLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31220CD0AA900149C7A /* VoiceLanguageManager.swift */; };
-		8F417BD920D4BF5A00647BC6 /* VoiceRecordResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */; };
-		8F417BDB20D4C47B00647BC6 /* VoiceRecordPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BDA20D4C47B00647BC6 /* VoiceRecordPolicy.swift */; };
+		8F417BDD20D4DFE000647BC6 /* VoiceRecordEndResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BDC20D4DFE000647BC6 /* VoiceRecordEndResponse.swift */; };
+		8F417BDF20D4E05200647BC6 /* VoicePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BDE20D4E05200647BC6 /* VoicePolicy.swift */; };
+		8F417BE120D4E20200647BC6 /* VoiceRecordSendResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BE020D4E20200647BC6 /* VoiceRecordSendResult.swift */; };
 		8F6F8F7020CCD32F00558EBD /* VoiceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F6F20CCD32F00558EBD /* VoiceLocation.swift */; };
 		8F6F8F7220CCD3E100558EBD /* VoiceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7120CCD3E100558EBD /* VoiceLanguage.swift */; };
 		8F6F8F7420CCD9B000558EBD /* VoiceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7320CCD9B000558EBD /* VoiceLocationManager.swift */; };
 		8FA719A020CC1AE9004149FD /* VoiceCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5E20CC15E000CBB546 /* VoiceCounter.swift */; };
-		8FA719A220CC1D5C004149FD /* VoiceRecordEndState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */; };
+		8FA719A220CC1D5C004149FD /* VoiceEndState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A120CC1D5C004149FD /* VoiceEndState.swift */; };
 		8FA719A420CC20E5004149FD /* VoiceRecordStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */; };
 		8FA719A620CC21ED004149FD /* VoiceSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A520CC21ED004149FD /* VoiceSender.swift */; };
 		8FA719A820CC2341004149FD /* VoiceMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A720CC2341004149FD /* VoiceMeta.swift */; };
 		8FA95D4B20CBF8C800CBB546 /* VoiceFileMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4A20CBF8C800CBB546 /* VoiceFileMeta.swift */; };
-		8FA95D4D20CBF9F400CBB546 /* VoiceRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */; };
-		8FA95D5120CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */; };
+		8FA95D4D20CBF9F400CBB546 /* VoiceRecordSendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4C20CBF9F400CBB546 /* VoiceRecordSendResponse.swift */; };
+		8FA95D5120CBFB2C00CBB546 /* VoiceRecordSendStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5020CBFB2C00CBB546 /* VoiceRecordSendStatus.swift */; };
 		8FA95D5320CBFB8D00CBB546 /* VoiceRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */; };
 		8FA95D5720CBFFF300CBB546 /* VoiceMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */; };
 		8FA95D5920CC005900CBB546 /* VoiceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5820CC005900CBB546 /* VoiceFile.swift */; };
@@ -296,18 +297,19 @@
 		8EE5F289D9673E7427C40AC9D5F6F157 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		8F32F31020CCE1DD00149C7A /* VoiceResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceResource.swift; path = NaturalVoice/Classes/VoiceResource.swift; sourceTree = "<group>"; };
 		8F32F31220CD0AA900149C7A /* VoiceLanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLanguageManager.swift; path = NaturalVoice/Classes/VoiceLanguageManager.swift; sourceTree = "<group>"; };
-		8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponseResult.swift; path = NaturalVoice/Classes/VoiceRecordResponseResult.swift; sourceTree = "<group>"; };
-		8F417BDA20D4C47B00647BC6 /* VoiceRecordPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordPolicy.swift; path = NaturalVoice/Classes/VoiceRecordPolicy.swift; sourceTree = "<group>"; };
+		8F417BDC20D4DFE000647BC6 /* VoiceRecordEndResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordEndResponse.swift; path = NaturalVoice/Classes/VoiceRecordEndResponse.swift; sourceTree = "<group>"; };
+		8F417BDE20D4E05200647BC6 /* VoicePolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoicePolicy.swift; path = NaturalVoice/Classes/VoicePolicy.swift; sourceTree = "<group>"; };
+		8F417BE020D4E20200647BC6 /* VoiceRecordSendResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceRecordSendResult.swift; path = NaturalVoice/Classes/VoiceRecordSendResult.swift; sourceTree = "<group>"; };
 		8F6F8F6F20CCD32F00558EBD /* VoiceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLocation.swift; path = NaturalVoice/Classes/VoiceLocation.swift; sourceTree = "<group>"; };
 		8F6F8F7120CCD3E100558EBD /* VoiceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLanguage.swift; path = NaturalVoice/Classes/VoiceLanguage.swift; sourceTree = "<group>"; };
 		8F6F8F7320CCD9B000558EBD /* VoiceLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLocationManager.swift; path = NaturalVoice/Classes/VoiceLocationManager.swift; sourceTree = "<group>"; };
-		8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordEndState.swift; path = NaturalVoice/Classes/VoiceRecordEndState.swift; sourceTree = "<group>"; };
+		8FA719A120CC1D5C004149FD /* VoiceEndState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceEndState.swift; path = NaturalVoice/Classes/VoiceEndState.swift; sourceTree = "<group>"; };
 		8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordStrategy.swift; path = NaturalVoice/Classes/VoiceRecordStrategy.swift; sourceTree = "<group>"; };
 		8FA719A520CC21ED004149FD /* VoiceSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceSender.swift; path = NaturalVoice/Classes/VoiceSender.swift; sourceTree = "<group>"; };
 		8FA719A720CC2341004149FD /* VoiceMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceMeta.swift; path = NaturalVoice/Classes/VoiceMeta.swift; sourceTree = "<group>"; };
 		8FA95D4A20CBF8C800CBB546 /* VoiceFileMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceFileMeta.swift; path = NaturalVoice/Classes/VoiceFileMeta.swift; sourceTree = "<group>"; };
-		8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponse.swift; path = NaturalVoice/Classes/VoiceRecordResponse.swift; sourceTree = "<group>"; };
-		8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponseStatus.swift; path = NaturalVoice/Classes/VoiceRecordResponseStatus.swift; sourceTree = "<group>"; };
+		8FA95D4C20CBF9F400CBB546 /* VoiceRecordSendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordSendResponse.swift; path = NaturalVoice/Classes/VoiceRecordSendResponse.swift; sourceTree = "<group>"; };
+		8FA95D5020CBFB2C00CBB546 /* VoiceRecordSendStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordSendStatus.swift; path = NaturalVoice/Classes/VoiceRecordSendStatus.swift; sourceTree = "<group>"; };
 		8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecorder.swift; path = NaturalVoice/Classes/VoiceRecorder.swift; sourceTree = "<group>"; };
 		8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceMediaType.swift; path = NaturalVoice/Classes/VoiceMediaType.swift; sourceTree = "<group>"; };
 		8FA95D5820CC005900CBB546 /* VoiceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceFile.swift; path = NaturalVoice/Classes/VoiceFile.swift; sourceTree = "<group>"; };
@@ -503,12 +505,13 @@
 				8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */,
 				8FA95D5820CC005900CBB546 /* VoiceFile.swift */,
 				8FA95D4A20CBF8C800CBB546 /* VoiceFileMeta.swift */,
-				8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */,
-				8F417BDA20D4C47B00647BC6 /* VoiceRecordPolicy.swift */,
+				8FA719A120CC1D5C004149FD /* VoiceEndState.swift */,
+				8F417BDE20D4E05200647BC6 /* VoicePolicy.swift */,
 				8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */,
-				8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */,
-				8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */,
-				8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */,
+				8F417BE020D4E20200647BC6 /* VoiceRecordSendResult.swift */,
+				8FA95D5020CBFB2C00CBB546 /* VoiceRecordSendStatus.swift */,
+				8FA95D4C20CBF9F400CBB546 /* VoiceRecordSendResponse.swift */,
+				8F417BDC20D4DFE000647BC6 /* VoiceRecordEndResponse.swift */,
 				8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */,
 				8FA719A520CC21ED004149FD /* VoiceSender.swift */,
 				D395F695F42C2F124637D0BB43946507 /* Pod */,
@@ -1075,24 +1078,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3216262DDE5C52E32FAB23239DA8C50 /* NaturalVoice-dummy.m in Sources */,
-				8FA95D4D20CBF9F400CBB546 /* VoiceRecordResponse.swift in Sources */,
+				8FA95D4D20CBF9F400CBB546 /* VoiceRecordSendResponse.swift in Sources */,
 				8FA95D4B20CBF8C800CBB546 /* VoiceFileMeta.swift in Sources */,
 				8FA719A620CC21ED004149FD /* VoiceSender.swift in Sources */,
-				8FA95D5120CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift in Sources */,
+				8FA95D5120CBFB2C00CBB546 /* VoiceRecordSendStatus.swift in Sources */,
 				8F6F8F7020CCD32F00558EBD /* VoiceLocation.swift in Sources */,
 				8FA719A020CC1AE9004149FD /* VoiceCounter.swift in Sources */,
 				8FA95D5320CBFB8D00CBB546 /* VoiceRecorder.swift in Sources */,
-				8FA719A220CC1D5C004149FD /* VoiceRecordEndState.swift in Sources */,
+				8FA719A220CC1D5C004149FD /* VoiceEndState.swift in Sources */,
 				8F6F8F7420CCD9B000558EBD /* VoiceLocationManager.swift in Sources */,
 				8F32F31120CCE1DD00149C7A /* VoiceResource.swift in Sources */,
 				8FA95D5920CC005900CBB546 /* VoiceFile.swift in Sources */,
 				8FA719A820CC2341004149FD /* VoiceMeta.swift in Sources */,
 				8F32F31320CD0AA900149C7A /* VoiceLanguageManager.swift in Sources */,
 				8FA95D5720CBFFF300CBB546 /* VoiceMediaType.swift in Sources */,
+				8F417BDF20D4E05200647BC6 /* VoicePolicy.swift in Sources */,
 				8F6F8F7220CCD3E100558EBD /* VoiceLanguage.swift in Sources */,
+				8F417BE120D4E20200647BC6 /* VoiceRecordSendResult.swift in Sources */,
+				8F417BDD20D4DFE000647BC6 /* VoiceRecordEndResponse.swift in Sources */,
 				8FA719A420CC20E5004149FD /* VoiceRecordStrategy.swift in Sources */,
-				8F417BDB20D4C47B00647BC6 /* VoiceRecordPolicy.swift in Sources */,
-				8F417BD920D4BF5A00647BC6 /* VoiceRecordResponseResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
