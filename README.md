@@ -109,7 +109,7 @@ let recordFailed: VoiceRecordFailed = { (error: Error?) in
 
 Handle policy `.userChoice` when recording is finished
 
-```
+```userChoice
 if response?.policy == .userChoice {
     let controller = UIAlertController(title: "Send or Abort?", message: nil, preferredStyle: .alert)
     controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
