@@ -113,11 +113,11 @@ Handle policy `.userChoice` when recording is finished
 if response?.policy == .userChoice {
     let controller = UIAlertController(title: "Send or Abort?", message: nil, preferredStyle: .alert)
     controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
-        // Send recorded file
+        /* Send recorded file */
         response?.send()
     }))
     controller.addAction(UIAlertAction(title: "Abort", style: .cancel, handler: { action in
-        // Abort sending recorded file
+        /* Abort sending recorded file */
         response?.abort()
     }))
     self.present(controller, animated: true, completion: {})             
