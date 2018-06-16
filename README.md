@@ -66,6 +66,10 @@ VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
 }, recordEnded: { response in
 
+//called when audio recording is stopped by user or max-duration timeout. this will return `VoiceRecordEndResponse`
+
+
+
 }, recordSent: { response in
 
 }, recordFailed: { error in
@@ -73,7 +77,58 @@ VoiceRecorder.shared.startRecording(recordStarted: { meta in
 })
 ```
 
+### Block handle ###
+
+Record stated
+
+```recordStarted
+recordStarted: { (meta: VoiceFileMeta?) in 
+
+}
+```
+
+Record ended
+
+```recordEnded
+recordEnded: { (response: VoiceRecordEndResponse?) in 
+
+}
+```
+
+Record sent
+
+```recordSent
+recordSent: { (response: VoiceRecordSendResponse?) in 
+
+}
+```
+
+Record failed
+
+```recordFailed
+recordFailed: { (error: Error?) in 
+
+}
+```
+
+Handle policy `.userChoice` when recording is finished
+
+```
+if response!.policy == .userChoice {
+    let controller = UIAlertController(title: "Send or Abort?", message: nil, preferredStyle: .alert)
+    controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { a in
+        response?.send()
+    }))
+    controller.addAction(UIAlertAction(title: "Abort", style: .cancel, handler: { a in
+        response?.abort()
+    }))
+    self.present(controller, animated: true, completion: {})             
+}
+```
+
 ### Stop recording ###
+
+This will override policy that was set in `VoiceRecordStrategy.maxRecordDurationPolicy`
 
 Stop with decision
 
