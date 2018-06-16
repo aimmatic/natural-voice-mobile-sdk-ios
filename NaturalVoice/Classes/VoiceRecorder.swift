@@ -63,12 +63,10 @@ open class VoiceRecorder: NSObject {
     }
     
     open func stopRecording(policy: VoicePolicy) {
-        print("Record stop by policy")
         self.eeennd(state: .endByUser, policy: policy)
     }
     
     fileprivate func setupRecordSession() {
-        print("Setup sesssion")
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(AVAudioSessionCategoryRecord)
@@ -79,7 +77,6 @@ open class VoiceRecorder: NSObject {
     }
     
     fileprivate func setupRecorder() {
-        print("Setup recorder")
         self.audioFile = VoiceFile(audioType: .audioWave)
         do {
             self.recorder = try AVAudioRecorder(url: self.audioFile.fileUrl, settings: self.recordSettings)
@@ -95,7 +92,6 @@ open class VoiceRecorder: NSObject {
     }
     
     fileprivate func start() {
-        print("Start recording")
         self.recordStarted?(self.audioMeta)
         self.counter.completedCount = {
             self.eeennd(state: .endByMax, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
@@ -104,7 +100,6 @@ open class VoiceRecorder: NSObject {
     }
     
     fileprivate func eeennd(state: VoiceEndState, policy: VoicePolicy) {
-        print("Record end")
         guard let recorder = self.recorder else { return }
         guard true == recorder.isRecording else { return }
         self.recorder.stop()
@@ -112,43 +107,35 @@ open class VoiceRecorder: NSObject {
         let session = AVAudioSession.sharedInstance()
         do { try session.setActive(false) } catch { }
         let response = VoiceRecordEndResponse(state: state, policy: policy, onSend: {
-            print("User choice: send")
             self.sendFile()
         }, onAbort: {
-            print("User choice: abort")
             self.removeFile(url: self.audioFile.fileUrl)
         })
         self.recordEnded?(response)
         switch policy {
         case .userChoice:
-            print("policy user choise")
             //do nothing
             break
         case .sendImmediately:
-            print("policy user send immediately")
             self.sendFile()
             break
         case .cancel:
-            print("policy user cancel")
             self.removeFile(url: self.audioFile.fileUrl)
             break
         }
     }
 
     fileprivate func sendFile() {
-        print("Start sending file")
         let location = self.locationService.location
         let sender = VoiceSender()
         sender.sendFile(file: self.audioFile, loc: location, meta: self.audioMeta) { data, error in
             if let error = error {
-                print("Sending file failed")
                 self.removeFile(url: self.audioFile.fileUrl)
                 let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
                 let status = VoiceRecordSendStatus.failure
                 let response = VoiceRecordSendResponse(result: result, status: status, error: error)
                 self.recordSent?(response)
             } else {
-                print("Sending file success")
                 self.removeFile(url: self.audioFile.fileUrl)
                 let result = VoiceRecordSendResult(message: "Success", data: data)
                 let status = VoiceRecordSendStatus.success
@@ -159,7 +146,6 @@ open class VoiceRecorder: NSObject {
     }
     
     fileprivate func removeFile(url: URL) {
-        print("Remove file")
         if true == FileManager.default.fileExists(atPath: url.path) {
             do {
                 try FileManager.default.removeItem(atPath: url.path)
@@ -176,6 +162,5 @@ extension VoiceRecorder: AVAudioRecorderDelegate {
     
     public func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         self.recordFailed?(error)
-        print("Recording failed")
     }
 }
