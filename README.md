@@ -44,37 +44,51 @@ Natural Voice requires location service and microphone permission, you need to a
 
 ## Using Voice Service ##
 
-Get supported languages
+### Get supported languages ###
 
 ```languages
 let supportedLanguages = AudioLanguageManager.shared.supportLanguages
 ```
 
-Configuration
+### Configuration ###
 
 ```configuration
-AudioConfiguraiton.apiKey = ""
-AudioConfiguraiton.language = language
-AudioConfiguraiton.recordMaxSecond = 60
+VoiceRecordStrategy.apiKey = "Your Api Key"
+VoiceRecordStrategy.language = language
+VoiceRecordStrategy.maxRecordDuration = 30
+VoiceRecordStrategy.maxRecordDurationPolicy = .sendImmediately
 ```
 
-Start recording
+### Start recording ###
 
 ```startrecording
-AudioRecorder.shared.startRecording(start: { meta in
+VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
-}, end: { state in
-        
-}, sent: { response in
-        
-}, failed: { error in
+}, recordEnded: { response in
+
+}, recordSent: { response in
+
+}, recordFailed: { error in
 
 })
 ```
 
-Stop recording
+### Stop recording ###
+
+Stop with decision
 
 ```stoprecording
-AudioRecorder.shared.stopRecording(state: .endByUser)
+VoiceRecorder.shared.stopRecording(policy: .userChoice)
 ```
 
+Stop and send immediately
+
+```stoprecording
+VoiceRecorder.shared.stopRecording(policy: .sendImmediately)
+```
+
+Stop and cancel sending
+
+```stoprecording
+VoiceRecorder.shared.stopRecording(policy: .cancel)
+```
