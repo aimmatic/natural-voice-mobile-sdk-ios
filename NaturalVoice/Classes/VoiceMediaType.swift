@@ -16,7 +16,7 @@ enum VoiceMediaType {
         }
     }
     
-    var extString: String {
+    var extensionString: String {
         switch self {
         case .audioWave:
             return "wav"

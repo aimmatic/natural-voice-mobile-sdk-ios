@@ -1,5 +1,5 @@
 //
-//  VoiceRecordSender.swift
+//  VoiceSender.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
@@ -8,18 +8,18 @@
 import UIKit
 import Alamofire
 
-class VoiceRecordSender: NSObject {
+class VoiceSender: NSObject {
     
-    func sendVoice(file: VoiceRecordFile, loc: VoiceLocation, meta: VoiceRecordMeta, sent: AudioRecordSent?) {
+    func sendVoice(file: VoiceFile, loc: VoiceLocation, meta: VoiceFileMeta, sent: VoiceRecordSent?) {
         if "" != VoiceRecordStrategy.apiKey {
             if let language = VoiceRecordStrategy.language {
                 let headers = ["Authorization": "AimMatic \(VoiceRecordStrategy.apiKey)"]
                 let threshold = SessionManager.multipartFormDataEncodingMemoryThreshold
                 let url = VoiceResource.host + VoiceResource.apiVersion + VoiceResource.naturalVoice
                 let language = language.bcp47Code
-                let audioUrl = file.audioUrl
-                let mimeType = file.audioType.mediaType
-                let fileName = file.audioUrl.lastPathComponent
+                let audioUrl = file.fileUrl
+                let mimeType = file.fileType.mediaType
+                let fileName = file.fileUrl.lastPathComponent
                 Alamofire.upload(multipartFormData: { formData in
                     formData.append(audioUrl!, withName: "uploadFile", fileName: fileName, mimeType: mimeType)
                     formData.append(self.encode(string: language),
@@ -46,16 +46,16 @@ class VoiceRecordSender: NSObject {
                     }
                 })
             } else {
-                self.responseFailed(message: messageInvalidLanguage, sent: sent)
-                self.remove(url: file.audioUrl)
+                self.responseFailed(message: reponseMessageInvalidLanguage, sent: sent)
+                self.remove(url: file.fileUrl)
             }
         } else {
-            self.responseFailed(message: messageInvalidApiKey, sent: sent)
-            self.remove(url: file.audioUrl)
+            self.responseFailed(message: reponseMessageInvalidApiKey, sent: sent)
+            self.remove(url: file.fileUrl)
         }
     }
     
-    fileprivate func responseFailed(message: String, sent: AudioRecordSent?) {
+    fileprivate func responseFailed(message: String, sent: VoiceRecordSent?) {
         let result = VoiceRecordResponseResult(message: message, data: nil)
         let status = VoiceRecordResponseStatus.failure
         let error = NSError(domain: message, code: 0, userInfo: nil)
@@ -63,7 +63,7 @@ class VoiceRecordSender: NSObject {
         sent?(response)
     }
     
-    fileprivate func responseSussess(message: String, data: Data?, sent: AudioRecordSent?) {
+    fileprivate func responseSussess(message: String, data: Data?, sent: VoiceRecordSent?) {
         let result = VoiceRecordResponseResult(message: message, data: data)
         let status = VoiceRecordResponseStatus.success
         let response = VoiceRecordResponse(result: result, status: status, error: nil)

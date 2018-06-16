@@ -8,7 +8,7 @@
 class VoiceCounter {
     
     fileprivate static let instance = VoiceCounter()
-    fileprivate let interval: TimeInterval = VoiceRecordStrategy.recordMaxSecond
+    fileprivate let interval: TimeInterval = VoiceRecordStrategy.maxRecordDuration
     fileprivate var timer: Timer?
     var completedCount: (() -> Void)?
     
