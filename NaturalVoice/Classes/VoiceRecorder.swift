@@ -1,5 +1,5 @@
 //
-//  AudioRecorder.swift
+//  VoiceRecorder.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
@@ -7,26 +7,26 @@
 
 import AVFoundation
 
-public typealias AudioRecordStart = ((AudioMeta?) -> Void)
-public typealias AudioRecordEnd = ((AudioEndState?) -> Void)
+public typealias AudioRecordStart = ((VoiceRecordMeta?) -> Void)
+public typealias AudioRecordEnd = ((VoiceRecordEndState?) -> Void)
 public typealias AudioRecordError = ((Error?) -> Void)
-public typealias AudioRecordSent = ((AudioResponse?) -> Void)
+public typealias AudioRecordSent = ((VoiceRecordResponse?) -> Void)
 
-open class AudioRecorder: NSObject {
+open class VoiceRecorder: NSObject {
     
-    fileprivate static let instance = AudioRecorder()
+    fileprivate static let instance = VoiceRecorder()
     fileprivate var start: AudioRecordStart?
     fileprivate var end: AudioRecordEnd?
     fileprivate var failed: AudioRecordError?
     fileprivate var sent: AudioRecordSent?
-    fileprivate var endState: AudioEndState?
-    fileprivate var audioMeta: AudioMeta?
-    fileprivate var counter = AudioCounter.shared
-    fileprivate var locationService = AudioLocationManager.shared
+    fileprivate var endState: VoiceRecordEndState?
+    fileprivate var audioMeta: VoiceRecordMeta?
+    fileprivate var counter = VoiceCounter.shared
+    fileprivate var locationService = VoiceLocationManager.shared
     var recorder: AVAudioRecorder!
-    var audioFile: AudioFile!
+    var audioFile: VoiceRecordFile!
     
-    open static var shared: AudioRecorder {
+    open static var shared: VoiceRecorder {
         return self.instance
     }
     
@@ -45,7 +45,7 @@ open class AudioRecorder: NSObject {
         }
     }
     
-    open func stopRecording(state: AudioEndState) {
+    open func stopRecording(state: VoiceRecordEndState) {
         if nil != self.recorder && false != self.recorder.isRecording {
             self.endState = state
             self.recorder.stop()
@@ -72,9 +72,9 @@ open class AudioRecorder: NSObject {
     }
     
     fileprivate func setupRecorder() {
-        self.audioMeta = AudioMeta(sampleRate: AudioContext.sampleRate,
-                                   channels: AudioContext.channel,
-                                   bitRate: AudioContext.bitRate)
+        self.audioMeta = VoiceRecordMeta(sampleRate: VoiceMeta.sampleRate,
+                                   channels: VoiceMeta.channel,
+                                   bitRate: VoiceMeta.bitRate)
         let settings: [String: Any] = [
             AVFormatIDKey: kAudioFormatLinearPCM,
             AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
@@ -83,7 +83,7 @@ open class AudioRecorder: NSObject {
             AVSampleRateKey: self.audioMeta!.sampleRate
         ]
         do {
-            self.audioFile = AudioFile(audioType: .audioWave)
+            self.audioFile = VoiceRecordFile(audioType: .audioWave)
             self.recorder = try AVAudioRecorder(url: self.audioFile.audioUrl, settings: settings)
             self.recorder.delegate = self
             self.recorder.isMeteringEnabled = false
@@ -102,12 +102,12 @@ open class AudioRecorder: NSObject {
     
     fileprivate func sendVoice() {
         let location = self.locationService.location
-        let sender = AudioSender()
+        let sender = VoiceRecordSender()
         sender.sendVoice(file: self.audioFile, loc: location, meta: self.audioMeta!, sent: self.sent)
     }
 }
 
-extension AudioRecorder: AVAudioRecorderDelegate {
+extension VoiceRecorder: AVAudioRecorderDelegate {
     
     public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         self.recorder = nil

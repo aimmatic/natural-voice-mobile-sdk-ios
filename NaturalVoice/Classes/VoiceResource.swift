@@ -1,11 +1,11 @@
 //
-//  AudioRest.swift
+//  VoiceResource.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/10/18.
 //
 
-struct AudioRest {
+struct VoiceResource {
     
     static let host: String = "https://api.aimmatic.com"
     static let apiVersion: String = "/v1"

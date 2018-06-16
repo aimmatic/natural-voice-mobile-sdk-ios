@@ -1,18 +1,18 @@
 //
-//  AudioCounter.swift
+//  VoiceCounter.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
 //
 
-class AudioCounter {
+class VoiceCounter {
     
-    fileprivate static let instance = AudioCounter()
-    fileprivate let interval: TimeInterval = AudioConfiguraiton.recordMaxSecond
+    fileprivate static let instance = VoiceCounter()
+    fileprivate let interval: TimeInterval = VoiceRecordStrategy.recordMaxSecond
     fileprivate var timer: Timer?
     var completedCount: (() -> Void)?
     
-    static var shared: AudioCounter {
+    static var shared: VoiceCounter {
         return self.instance
     }
     

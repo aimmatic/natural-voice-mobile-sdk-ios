@@ -1,21 +1,21 @@
 //
-//  AudioLanguageManager.swift
+//  VoiceLanguageManager.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/10/18.
 //
 
-open class AudioLanguageManager {
+open class VoiceLanguageManager {
 
-    fileprivate static let instance = AudioLanguageManager()
-    fileprivate var languages: [AudioLanguage] = []
-    open var supportLanguages: [AudioLanguage]  {
+    fileprivate static let instance = VoiceLanguageManager()
+    fileprivate var languages: [VoiceLanguage] = []
+    open var supportLanguages: [VoiceLanguage]  {
         get {
             return self.languages
         }
     }
     
-    open static var shared: AudioLanguageManager {
+    open static var shared: VoiceLanguageManager {
         return self.instance
     }
     
@@ -68,11 +68,11 @@ open class AudioLanguageManager {
         let eachLines = allLangs.components(separatedBy: "\n")
         eachLines.forEach {
             let columns = $0.components(separatedBy: ",")
-            self.languages.append(AudioLanguage(displayLang: columns[0], langEn: columns[1], bcp47Code: columns[2], langCode: columns[3]))
+            self.languages.append(VoiceLanguage(displayLang: columns[0], langEn: columns[1], bcp47Code: columns[2], langCode: columns[3]))
         }
     }
     
-    open func getLanguage(bcp47Code: String) -> AudioLanguage? {
+    open func getLanguage(bcp47Code: String) -> VoiceLanguage? {
         let languages = self.languages.filter({
             $0.bcp47Code.lowercased() == bcp47Code.lowercased() || $0.langCode.lowercased() == bcp47Code.lowercased()
         })

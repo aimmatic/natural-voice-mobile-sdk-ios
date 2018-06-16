@@ -80,22 +80,23 @@
 		8B55BD430033027AD5FF22D630DD9F62 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A0FFC6F317CEB4D9D3AAF3C6B2F79 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8B930BD0459377137F71A68C3B3DE9DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A4E99D1FD1F5132070E428BF547C55 /* Foundation.framework */; };
 		8D421B296EA8AAD495FD21AC43E81177 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = A963491119E6DE1D74B7091190D6A49A /* QCKDSL.m */; };
-		8F32F31120CCE1DD00149C7A /* AudioRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31020CCE1DD00149C7A /* AudioRest.swift */; };
-		8F32F31320CD0AA900149C7A /* AudioLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31220CD0AA900149C7A /* AudioLanguageManager.swift */; };
-		8F6F8F7020CCD32F00558EBD /* AudioLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F6F20CCD32F00558EBD /* AudioLocation.swift */; };
-		8F6F8F7220CCD3E100558EBD /* AudioLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7120CCD3E100558EBD /* AudioLanguage.swift */; };
-		8F6F8F7420CCD9B000558EBD /* AudioLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7320CCD9B000558EBD /* AudioLocationManager.swift */; };
-		8FA719A020CC1AE9004149FD /* AudioCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5E20CC15E000CBB546 /* AudioCounter.swift */; };
-		8FA719A220CC1D5C004149FD /* AudioEndState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A120CC1D5C004149FD /* AudioEndState.swift */; };
-		8FA719A420CC20E5004149FD /* AudioConfiguraiton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A320CC20E5004149FD /* AudioConfiguraiton.swift */; };
-		8FA719A620CC21ED004149FD /* AudioSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A520CC21ED004149FD /* AudioSender.swift */; };
-		8FA719A820CC2341004149FD /* AudioContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A720CC2341004149FD /* AudioContext.swift */; };
-		8FA95D4B20CBF8C800CBB546 /* AudioMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4A20CBF8C800CBB546 /* AudioMeta.swift */; };
-		8FA95D4D20CBF9F400CBB546 /* AudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4C20CBF9F400CBB546 /* AudioResponse.swift */; };
-		8FA95D5120CBFB2C00CBB546 /* AudioResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5020CBFB2C00CBB546 /* AudioResponseStatus.swift */; };
-		8FA95D5320CBFB8D00CBB546 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5220CBFB8D00CBB546 /* AudioRecorder.swift */; };
-		8FA95D5720CBFFF300CBB546 /* AudioType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5620CBFFF300CBB546 /* AudioType.swift */; };
-		8FA95D5920CC005900CBB546 /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5820CC005900CBB546 /* AudioFile.swift */; };
+		8F32F31120CCE1DD00149C7A /* VoiceResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31020CCE1DD00149C7A /* VoiceResource.swift */; };
+		8F32F31320CD0AA900149C7A /* VoiceLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F32F31220CD0AA900149C7A /* VoiceLanguageManager.swift */; };
+		8F417BD920D4BF5A00647BC6 /* VoiceRecordResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */; };
+		8F6F8F7020CCD32F00558EBD /* VoiceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F6F20CCD32F00558EBD /* VoiceLocation.swift */; };
+		8F6F8F7220CCD3E100558EBD /* VoiceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7120CCD3E100558EBD /* VoiceLanguage.swift */; };
+		8F6F8F7420CCD9B000558EBD /* VoiceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F8F7320CCD9B000558EBD /* VoiceLocationManager.swift */; };
+		8FA719A020CC1AE9004149FD /* VoiceCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5E20CC15E000CBB546 /* VoiceCounter.swift */; };
+		8FA719A220CC1D5C004149FD /* VoiceRecordEndState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */; };
+		8FA719A420CC20E5004149FD /* VoiceRecordStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */; };
+		8FA719A620CC21ED004149FD /* VoiceRecordSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A520CC21ED004149FD /* VoiceRecordSender.swift */; };
+		8FA719A820CC2341004149FD /* VoiceMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA719A720CC2341004149FD /* VoiceMeta.swift */; };
+		8FA95D4B20CBF8C800CBB546 /* VoiceRecordMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4A20CBF8C800CBB546 /* VoiceRecordMeta.swift */; };
+		8FA95D4D20CBF9F400CBB546 /* VoiceRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */; };
+		8FA95D5120CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */; };
+		8FA95D5320CBFB8D00CBB546 /* VoiceRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */; };
+		8FA95D5720CBFFF300CBB546 /* VoiceMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */; };
+		8FA95D5920CC005900CBB546 /* VoiceRecordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95D5820CC005900CBB546 /* VoiceRecordFile.swift */; };
 		91E30B4C70EE32EF2840D58190AFBF1A /* NSString+C99ExtendedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA0B231E16A02A7781106F4C33307A5 /* NSString+C99ExtendedIdentifier.swift */; };
 		96132E7432F8DD315A88A07C6B4F9C72 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A8A43162F5621CFA11073175BA15C9 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		988EED125395950177DC14AF9BC87D8D /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96642269E3A8979851706F87943F4BB /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -292,22 +293,23 @@
 		894A0FFC6F317CEB4D9D3AAF3C6B2F79 /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
 		8A867184F01F9D3C024636DA9C6556E1 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
 		8EE5F289D9673E7427C40AC9D5F6F157 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
-		8F32F31020CCE1DD00149C7A /* AudioRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioRest.swift; path = NaturalVoice/Classes/AudioRest.swift; sourceTree = "<group>"; };
-		8F32F31220CD0AA900149C7A /* AudioLanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioLanguageManager.swift; path = NaturalVoice/Classes/AudioLanguageManager.swift; sourceTree = "<group>"; };
-		8F6F8F6F20CCD32F00558EBD /* AudioLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioLocation.swift; path = NaturalVoice/Classes/AudioLocation.swift; sourceTree = "<group>"; };
-		8F6F8F7120CCD3E100558EBD /* AudioLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioLanguage.swift; path = NaturalVoice/Classes/AudioLanguage.swift; sourceTree = "<group>"; };
-		8F6F8F7320CCD9B000558EBD /* AudioLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioLocationManager.swift; path = NaturalVoice/Classes/AudioLocationManager.swift; sourceTree = "<group>"; };
-		8FA719A120CC1D5C004149FD /* AudioEndState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioEndState.swift; path = NaturalVoice/Classes/AudioEndState.swift; sourceTree = "<group>"; };
-		8FA719A320CC20E5004149FD /* AudioConfiguraiton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioConfiguraiton.swift; path = NaturalVoice/Classes/AudioConfiguraiton.swift; sourceTree = "<group>"; };
-		8FA719A520CC21ED004149FD /* AudioSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioSender.swift; path = NaturalVoice/Classes/AudioSender.swift; sourceTree = "<group>"; };
-		8FA719A720CC2341004149FD /* AudioContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioContext.swift; path = NaturalVoice/Classes/AudioContext.swift; sourceTree = "<group>"; };
-		8FA95D4A20CBF8C800CBB546 /* AudioMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioMeta.swift; path = NaturalVoice/Classes/AudioMeta.swift; sourceTree = "<group>"; };
-		8FA95D4C20CBF9F400CBB546 /* AudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioResponse.swift; path = NaturalVoice/Classes/AudioResponse.swift; sourceTree = "<group>"; };
-		8FA95D5020CBFB2C00CBB546 /* AudioResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioResponseStatus.swift; path = NaturalVoice/Classes/AudioResponseStatus.swift; sourceTree = "<group>"; };
-		8FA95D5220CBFB8D00CBB546 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioRecorder.swift; path = NaturalVoice/Classes/AudioRecorder.swift; sourceTree = "<group>"; };
-		8FA95D5620CBFFF300CBB546 /* AudioType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioType.swift; path = NaturalVoice/Classes/AudioType.swift; sourceTree = "<group>"; };
-		8FA95D5820CC005900CBB546 /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioFile.swift; path = NaturalVoice/Classes/AudioFile.swift; sourceTree = "<group>"; };
-		8FA95D5E20CC15E000CBB546 /* AudioCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioCounter.swift; path = NaturalVoice/Classes/AudioCounter.swift; sourceTree = "<group>"; };
+		8F32F31020CCE1DD00149C7A /* VoiceResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceResource.swift; path = NaturalVoice/Classes/VoiceResource.swift; sourceTree = "<group>"; };
+		8F32F31220CD0AA900149C7A /* VoiceLanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLanguageManager.swift; path = NaturalVoice/Classes/VoiceLanguageManager.swift; sourceTree = "<group>"; };
+		8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponseResult.swift; path = NaturalVoice/Classes/VoiceRecordResponseResult.swift; sourceTree = "<group>"; };
+		8F6F8F6F20CCD32F00558EBD /* VoiceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLocation.swift; path = NaturalVoice/Classes/VoiceLocation.swift; sourceTree = "<group>"; };
+		8F6F8F7120CCD3E100558EBD /* VoiceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLanguage.swift; path = NaturalVoice/Classes/VoiceLanguage.swift; sourceTree = "<group>"; };
+		8F6F8F7320CCD9B000558EBD /* VoiceLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceLocationManager.swift; path = NaturalVoice/Classes/VoiceLocationManager.swift; sourceTree = "<group>"; };
+		8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordEndState.swift; path = NaturalVoice/Classes/VoiceRecordEndState.swift; sourceTree = "<group>"; };
+		8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordStrategy.swift; path = NaturalVoice/Classes/VoiceRecordStrategy.swift; sourceTree = "<group>"; };
+		8FA719A520CC21ED004149FD /* VoiceRecordSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordSender.swift; path = NaturalVoice/Classes/VoiceRecordSender.swift; sourceTree = "<group>"; };
+		8FA719A720CC2341004149FD /* VoiceMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceMeta.swift; path = NaturalVoice/Classes/VoiceMeta.swift; sourceTree = "<group>"; };
+		8FA95D4A20CBF8C800CBB546 /* VoiceRecordMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordMeta.swift; path = NaturalVoice/Classes/VoiceRecordMeta.swift; sourceTree = "<group>"; };
+		8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponse.swift; path = NaturalVoice/Classes/VoiceRecordResponse.swift; sourceTree = "<group>"; };
+		8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordResponseStatus.swift; path = NaturalVoice/Classes/VoiceRecordResponseStatus.swift; sourceTree = "<group>"; };
+		8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecorder.swift; path = NaturalVoice/Classes/VoiceRecorder.swift; sourceTree = "<group>"; };
+		8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceMediaType.swift; path = NaturalVoice/Classes/VoiceMediaType.swift; sourceTree = "<group>"; };
+		8FA95D5820CC005900CBB546 /* VoiceRecordFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceRecordFile.swift; path = NaturalVoice/Classes/VoiceRecordFile.swift; sourceTree = "<group>"; };
+		8FA95D5E20CC15E000CBB546 /* VoiceCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceCounter.swift; path = NaturalVoice/Classes/VoiceCounter.swift; sourceTree = "<group>"; };
 		900D3F278366B23ED6B91494C59C9AA5 /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
 		905E38E0256955C49BE0E255084CD31D /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		91D8A9F46026A7B80982CC9BDEA0BDBC /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
@@ -489,22 +491,23 @@
 		341CF5CD92BF1A03FC0F060B7F541BBC /* NaturalVoice */ = {
 			isa = PBXGroup;
 			children = (
-				8FA719A320CC20E5004149FD /* AudioConfiguraiton.swift */,
-				8F32F31020CCE1DD00149C7A /* AudioRest.swift */,
-				8FA95D5E20CC15E000CBB546 /* AudioCounter.swift */,
-				8FA719A720CC2341004149FD /* AudioContext.swift */,
-				8F6F8F7320CCD9B000558EBD /* AudioLocationManager.swift */,
-				8F6F8F6F20CCD32F00558EBD /* AudioLocation.swift */,
-				8F32F31220CD0AA900149C7A /* AudioLanguageManager.swift */,
-				8F6F8F7120CCD3E100558EBD /* AudioLanguage.swift */,
-				8FA719A120CC1D5C004149FD /* AudioEndState.swift */,
-				8FA95D5620CBFFF300CBB546 /* AudioType.swift */,
-				8FA95D5820CC005900CBB546 /* AudioFile.swift */,
-				8FA95D4A20CBF8C800CBB546 /* AudioMeta.swift */,
-				8FA95D4C20CBF9F400CBB546 /* AudioResponse.swift */,
-				8FA95D5020CBFB2C00CBB546 /* AudioResponseStatus.swift */,
-				8FA719A520CC21ED004149FD /* AudioSender.swift */,
-				8FA95D5220CBFB8D00CBB546 /* AudioRecorder.swift */,
+				8FA719A320CC20E5004149FD /* VoiceRecordStrategy.swift */,
+				8F32F31020CCE1DD00149C7A /* VoiceResource.swift */,
+				8FA95D5E20CC15E000CBB546 /* VoiceCounter.swift */,
+				8FA719A720CC2341004149FD /* VoiceMeta.swift */,
+				8F6F8F7320CCD9B000558EBD /* VoiceLocationManager.swift */,
+				8F6F8F6F20CCD32F00558EBD /* VoiceLocation.swift */,
+				8F32F31220CD0AA900149C7A /* VoiceLanguageManager.swift */,
+				8F6F8F7120CCD3E100558EBD /* VoiceLanguage.swift */,
+				8FA719A120CC1D5C004149FD /* VoiceRecordEndState.swift */,
+				8FA95D5620CBFFF300CBB546 /* VoiceMediaType.swift */,
+				8FA95D5820CC005900CBB546 /* VoiceRecordFile.swift */,
+				8FA95D4A20CBF8C800CBB546 /* VoiceRecordMeta.swift */,
+				8FA95D4C20CBF9F400CBB546 /* VoiceRecordResponse.swift */,
+				8F417BD820D4BF5A00647BC6 /* VoiceRecordResponseResult.swift */,
+				8FA95D5020CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift */,
+				8FA719A520CC21ED004149FD /* VoiceRecordSender.swift */,
+				8FA95D5220CBFB8D00CBB546 /* VoiceRecorder.swift */,
 				D395F695F42C2F124637D0BB43946507 /* Pod */,
 				F3110B4B4BD287A21A714D6AB24FA993 /* Support Files */,
 			);
@@ -1069,22 +1072,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3216262DDE5C52E32FAB23239DA8C50 /* NaturalVoice-dummy.m in Sources */,
-				8FA95D4D20CBF9F400CBB546 /* AudioResponse.swift in Sources */,
-				8FA95D4B20CBF8C800CBB546 /* AudioMeta.swift in Sources */,
-				8FA719A620CC21ED004149FD /* AudioSender.swift in Sources */,
-				8FA95D5120CBFB2C00CBB546 /* AudioResponseStatus.swift in Sources */,
-				8F6F8F7020CCD32F00558EBD /* AudioLocation.swift in Sources */,
-				8FA719A020CC1AE9004149FD /* AudioCounter.swift in Sources */,
-				8FA95D5320CBFB8D00CBB546 /* AudioRecorder.swift in Sources */,
-				8FA719A220CC1D5C004149FD /* AudioEndState.swift in Sources */,
-				8F6F8F7420CCD9B000558EBD /* AudioLocationManager.swift in Sources */,
-				8F32F31120CCE1DD00149C7A /* AudioRest.swift in Sources */,
-				8FA95D5920CC005900CBB546 /* AudioFile.swift in Sources */,
-				8FA719A820CC2341004149FD /* AudioContext.swift in Sources */,
-				8F32F31320CD0AA900149C7A /* AudioLanguageManager.swift in Sources */,
-				8FA95D5720CBFFF300CBB546 /* AudioType.swift in Sources */,
-				8F6F8F7220CCD3E100558EBD /* AudioLanguage.swift in Sources */,
-				8FA719A420CC20E5004149FD /* AudioConfiguraiton.swift in Sources */,
+				8FA95D4D20CBF9F400CBB546 /* VoiceRecordResponse.swift in Sources */,
+				8FA95D4B20CBF8C800CBB546 /* VoiceRecordMeta.swift in Sources */,
+				8FA719A620CC21ED004149FD /* VoiceRecordSender.swift in Sources */,
+				8FA95D5120CBFB2C00CBB546 /* VoiceRecordResponseStatus.swift in Sources */,
+				8F6F8F7020CCD32F00558EBD /* VoiceLocation.swift in Sources */,
+				8FA719A020CC1AE9004149FD /* VoiceCounter.swift in Sources */,
+				8FA95D5320CBFB8D00CBB546 /* VoiceRecorder.swift in Sources */,
+				8FA719A220CC1D5C004149FD /* VoiceRecordEndState.swift in Sources */,
+				8F6F8F7420CCD9B000558EBD /* VoiceLocationManager.swift in Sources */,
+				8F32F31120CCE1DD00149C7A /* VoiceResource.swift in Sources */,
+				8FA95D5920CC005900CBB546 /* VoiceRecordFile.swift in Sources */,
+				8FA719A820CC2341004149FD /* VoiceMeta.swift in Sources */,
+				8F32F31320CD0AA900149C7A /* VoiceLanguageManager.swift in Sources */,
+				8FA95D5720CBFFF300CBB546 /* VoiceMediaType.swift in Sources */,
+				8F6F8F7220CCD3E100558EBD /* VoiceLanguage.swift in Sources */,
+				8FA719A420CC20E5004149FD /* VoiceRecordStrategy.swift in Sources */,
+				8F417BD920D4BF5A00647BC6 /* VoiceRecordResponseResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

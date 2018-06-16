@@ -1,5 +1,5 @@
 //
-//  AudioLocationManager.swift
+//  VoiceLocationManager.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/10/18.
@@ -8,13 +8,13 @@
 import Foundation
 import CoreLocation
 
-class AudioLocationManager: NSObject {
+class VoiceLocationManager: NSObject {
 
-    fileprivate static let instance = AudioLocationManager()
+    fileprivate static let instance = VoiceLocationManager()
     fileprivate var locationManager: CLLocationManager!
-    var location = AudioLocation(lat: 0, lng: 0)
+    var location = VoiceLocation(lat: 0, lng: 0)
     
-    static var shared: AudioLocationManager {
+    static var shared: VoiceLocationManager {
         return self.instance
     }
     
@@ -28,12 +28,12 @@ class AudioLocationManager: NSObject {
     }
 }
 
-extension AudioLocationManager: CLLocationManagerDelegate {
+extension VoiceLocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = manager.location {
             let coordinate = location.coordinate
-            self.location = AudioLocation(lat: coordinate.latitude, lng: coordinate.longitude)
+            self.location = VoiceLocation(lat: coordinate.latitude, lng: coordinate.longitude)
         }
     }
 }

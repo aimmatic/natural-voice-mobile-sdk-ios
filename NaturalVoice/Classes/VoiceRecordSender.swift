@@ -1,5 +1,5 @@
 //
-//  AudioSender.swift
+//  VoiceRecordSender.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
@@ -8,14 +8,14 @@
 import UIKit
 import Alamofire
 
-class AudioSender: NSObject {
+class VoiceRecordSender: NSObject {
     
-    func sendVoice(file: AudioFile, loc: AudioLocation, meta: AudioMeta, sent: AudioRecordSent?) {
-        if "" != AudioConfiguraiton.apiKey {
-            if let language = AudioConfiguraiton.language {
-                let headers = ["Authorization": "AimMatic \(AudioConfiguraiton.apiKey)"]
+    func sendVoice(file: VoiceRecordFile, loc: VoiceLocation, meta: VoiceRecordMeta, sent: AudioRecordSent?) {
+        if "" != VoiceRecordStrategy.apiKey {
+            if let language = VoiceRecordStrategy.language {
+                let headers = ["Authorization": "AimMatic \(VoiceRecordStrategy.apiKey)"]
                 let threshold = SessionManager.multipartFormDataEncodingMemoryThreshold
-                let url = AudioRest.host + AudioRest.apiVersion + AudioRest.naturalVoice
+                let url = VoiceResource.host + VoiceResource.apiVersion + VoiceResource.naturalVoice
                 let language = language.bcp47Code
                 let audioUrl = file.audioUrl
                 let mimeType = file.audioType.mediaType
@@ -56,17 +56,17 @@ class AudioSender: NSObject {
     }
     
     fileprivate func responseFailed(message: String, sent: AudioRecordSent?) {
-        let result = AudioResponseResult(message: message, data: nil)
-        let status = AudioResponseStatus.failure
+        let result = VoiceRecordResponseResult(message: message, data: nil)
+        let status = VoiceRecordResponseStatus.failure
         let error = NSError(domain: message, code: 0, userInfo: nil)
-        let response = AudioResponse(result: result, status: status, error: error)
+        let response = VoiceRecordResponse(result: result, status: status, error: error)
         sent?(response)
     }
     
     fileprivate func responseSussess(message: String, data: Data?, sent: AudioRecordSent?) {
-        let result = AudioResponseResult(message: message, data: data)
-        let status = AudioResponseStatus.success
-        let response = AudioResponse(result: result, status: status, error: nil)
+        let result = VoiceRecordResponseResult(message: message, data: data)
+        let status = VoiceRecordResponseStatus.success
+        let response = VoiceRecordResponse(result: result, status: status, error: nil)
         sent?(response)
     }
     

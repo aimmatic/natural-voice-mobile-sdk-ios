@@ -1,11 +1,11 @@
 //
-//  AudioType.swift
+//  VoiceMediaType.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
 //
 
-enum AudioType {
+enum VoiceMediaType {
     
     case audioWave
     

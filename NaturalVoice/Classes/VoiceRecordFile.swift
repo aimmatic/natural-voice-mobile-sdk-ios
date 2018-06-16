@@ -1,16 +1,16 @@
 //
-//  AudioFile.swift
+//  VoiceRecordFile.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/9/18.
 //
 
-struct AudioFile {
+struct VoiceRecordFile {
     
     var audioUrl: URL!
-    var audioType: AudioType!
+    var audioType: VoiceMediaType!
     
-    init(audioType: AudioType) {
+    init(audioType: VoiceMediaType) {
         self.audioType = audioType
         let fileName = UUID().uuidString + "." + self.audioType.extString
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

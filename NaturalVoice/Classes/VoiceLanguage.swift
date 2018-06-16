@@ -1,11 +1,11 @@
 //
-//  AudioLanguage.swift
+//  VoiceLanguage.swift
 //  NaturalVoice
 //
 //  Created by AimMatic Team on 6/10/18.
 //
 
-public struct AudioLanguage {
+public struct VoiceLanguage {
     
     public var displayLang: String
     public var langEn: String
