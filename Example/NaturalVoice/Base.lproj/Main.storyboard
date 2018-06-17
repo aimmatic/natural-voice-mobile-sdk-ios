@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,75 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-xk-q1u">
+                                <rect key="frame" x="117" y="69" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PID-vq-tgW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="pS1-GY-djZ"/>
+                                </constraints>
+                                <state key="normal" title="Record">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0tZ-qz-Jkl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-S9-yFh">
+                                <rect key="frame" x="117.5" y="229" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8kU-kf-XKi"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="d0L-wa-z39"/>
+                                </constraints>
+                                <state key="normal" title="Stop and send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAndSendTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Idq-CV-H1m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2S-TY-mxf">
+                                <rect key="frame" x="117.5" y="309" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZYk-GR-efS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="qyN-vQ-0uF"/>
+                                </constraints>
+                                <state key="normal" title="Stop and cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAndCancelTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="DC4-oJ-ost"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lv-VU-1oG">
+                                <rect key="frame" x="117" y="149" width="140" height="30"/>
+                                <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ECK-h0-lgq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="pLQ-16-TiX"/>
+                                </constraints>
+                                <state key="normal" title="Stop and choose">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAndChooseTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TJB-Ci-3oX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LTJ-xk-q1u" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="49" id="7oc-oB-07J"/>
+                            <constraint firstItem="G2S-TY-mxf" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="InS-H8-iVB"/>
+                            <constraint firstItem="7Lv-VU-1oG" firstAttribute="top" secondItem="LTJ-xk-q1u" secondAttribute="bottom" constant="50" id="Lq6-7e-dUu"/>
+                            <constraint firstItem="7Lv-VU-1oG" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="T4G-jN-Kk0"/>
+                            <constraint firstItem="LTJ-xk-q1u" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="VvK-4A-uBu"/>
+                            <constraint firstItem="fTm-S9-yFh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="XQ3-ds-QBI"/>
+                            <constraint firstItem="G2S-TY-mxf" firstAttribute="top" secondItem="fTm-S9-yFh" secondAttribute="bottom" constant="50" id="cN4-MZ-04P"/>
+                            <constraint firstItem="fTm-S9-yFh" firstAttribute="top" secondItem="7Lv-VU-1oG" secondAttribute="bottom" constant="50" id="wmJ-ow-RSW"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

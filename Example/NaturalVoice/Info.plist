@@ -33,7 +33,17 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App uses microphone to record sound</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App uses service to determine user&apos;s location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App uses service to determine user&apos;s location</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
