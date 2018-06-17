@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double AlamofireVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
+FOUNDATION_EXPORT double Pods_NaturalVoice_ExampleVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_NaturalVoice_ExampleVersionString[];
 

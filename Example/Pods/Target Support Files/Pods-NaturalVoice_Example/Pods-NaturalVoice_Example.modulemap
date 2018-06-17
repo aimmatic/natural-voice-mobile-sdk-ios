@@ -1,0 +1,6 @@
+framework module Pods_NaturalVoice_Example {
+  umbrella header "Pods-NaturalVoice_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
