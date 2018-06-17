@@ -19,13 +19,13 @@ Example:
 
 ## Cocoapods ##
 
-```gradle
+```pod
 pod 'NaturalVoice'
 ```
 
 ## Install ##
 
-```gradle
+```install
 pod install
 ```
 

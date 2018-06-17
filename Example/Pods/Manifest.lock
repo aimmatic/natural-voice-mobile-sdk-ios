@@ -1,7 +1,5 @@
 PODS:
-  - Alamofire (4.7.2)
-  - NaturalVoice (0.1.0):
-    - Alamofire (~> 4.7)
+  - NaturalVoice (0.1.0)
   - Nimble (7.0.3)
   - Quick (1.2.0)
 
@@ -12,7 +10,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - Nimble
     - Quick
 
@@ -21,11 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  NaturalVoice: 99fec6816c930c3233a991d34283ca8401108ca1
+  NaturalVoice: 97e0a354e9ad70668a8fa5183484aef816392d84
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
-PODFILE CHECKSUM: bcd1950ce9fee5dbce41f703226add2205e36b09
+PODFILE CHECKSUM: 48c77d293fa0c769784f710ed6fc713df693bb41
 
 COCOAPODS: 1.5.3

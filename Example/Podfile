@@ -1,6 +1,12 @@
 use_frameworks!
-target 'NaturalVoice_Tests' do
+
+target 'NaturalVoice_Example' do
   pod 'NaturalVoice', :path => '../'
-  pod 'Quick', '~> 1.2.0'
-  pod 'Nimble', '~> 7.0.2'
+
+  target 'NaturalVoice_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 1.2.0'
+    pod 'Nimble', '~> 7.0.2'
+  end
 end
