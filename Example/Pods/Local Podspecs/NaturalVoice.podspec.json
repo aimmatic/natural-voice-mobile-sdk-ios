@@ -1,6 +1,6 @@
 {
   "name": "NaturalVoice",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "Public beta client library to integrate voice feedback using Natural Voice.",
   "description": "Public beta client library to integrate voice feedback using Natural Voice (https://www.naturalvoice.ai) functions powered by Cloud Speech and Cloud Natural Language from Google Cloud Platform™ service",
   "homepage": "https://github.com/aimmatic/natural-voice-mobile-sdk-ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/aimmatic/natural-voice-mobile-sdk-ios.git",
-    "tag": "0.1.0"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "8.0"
