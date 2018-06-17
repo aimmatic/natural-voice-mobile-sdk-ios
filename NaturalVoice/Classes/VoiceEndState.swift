@@ -8,4 +8,5 @@
 public enum VoiceEndState: Int {
     case endByMax = 1
     case endByUser = 2
+    case endByInterruption = 3
 }

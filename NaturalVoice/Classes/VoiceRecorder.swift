@@ -26,6 +26,11 @@ open class VoiceRecorder: NSObject {
     fileprivate var recorder: AVAudioRecorder!
     fileprivate var audioFile: VoiceFile!
     
+    deinit {
+        let notificationName = NSNotification.Name.AVAudioSessionInterruption
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    }
+    
     open static var shared: VoiceRecorder {
         return self.instance
     }
@@ -49,6 +54,10 @@ open class VoiceRecorder: NSObject {
                                AVEncoderBitRateKey: self.audioMeta.bitRate,
                                AVNumberOfChannelsKey: self.audioMeta.channels,
                                AVSampleRateKey: self.audioMeta.sampleRate]
+        
+        let selector = #selector(handleInterruption(object:))
+        let notificationName = NSNotification.Name.AVAudioSessionInterruption
+        NotificationCenter.default.addObserver(self, selector: selector, name: notificationName, object: nil)
     }
     
     open func startRecording(recordStarted: VoiceRecordStarted?, recordEnded: VoiceRecordEnded?, recordSent: VoiceRecordSent?, recordFailed: VoiceRecordFailed?) {
@@ -63,7 +72,7 @@ open class VoiceRecorder: NSObject {
     }
     
     open func stopRecording(policy: VoicePolicy) {
-        self.eeennd(state: .endByUser, policy: policy)
+        self.end(state: .endByUser, policy: policy)
     }
     
     fileprivate func setupRecordSession() {
@@ -94,12 +103,12 @@ open class VoiceRecorder: NSObject {
     fileprivate func start() {
         self.recordStarted?(self.audioMeta)
         self.counter.completedCount = {
-            self.eeennd(state: .endByMax, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
+            self.end(state: .endByMax, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
         }
         self.counter.start()
     }
     
-    fileprivate func eeennd(state: VoiceEndState, policy: VoicePolicy) {
+    fileprivate func end(state: VoiceEndState, policy: VoicePolicy) {
         guard let recorder = self.recorder else { return }
         guard true == recorder.isRecording else { return }
         self.recorder.stop()
@@ -150,6 +159,18 @@ open class VoiceRecorder: NSObject {
             do {
                 try FileManager.default.removeItem(atPath: url.path)
             } catch { }
+        }
+    }
+    
+    @objc func handleInterruption(object: NSNotification) {
+        guard let userInfo = object.userInfo else { return }
+        guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? NSNumber else { return }
+        switch type.uintValue {
+        case AVAudioSessionInterruptionType.began.rawValue:
+            self.end(state: .endByInterruption, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
+            break
+        default:
+            break
         }
     }
 }
