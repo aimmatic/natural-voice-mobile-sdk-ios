@@ -1,49 +1,25 @@
-// https://github.com/Quick/Quick
-
 import Quick
 import Nimble
 import NaturalVoice
 
-class TableOfContentsSpec: QuickSpec {
+class Tests: QuickSpec {
+    
     override func spec() {
-        describe("these will fail") {
-
-            it("can do maths") {
-                expect(1) == 2
+        context("Strategy") {
+            beforeEach {
+                VoiceRecordStrategy.apiKey = ""
+                VoiceRecordStrategy.language = nil
+                VoiceRecordStrategy.maxRecordDuration = 65
+                VoiceRecordStrategy.maxRecordDurationPolicy = .sendImmediately
             }
-
-            it("can read") {
-                expect("number") == "string"
+            it("ApiKey") {
+                expect(VoiceRecordStrategy.apiKey) != ""
             }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+            it("Language") {
+                expect(VoiceRecordStrategy.language).toNot(beNil())
             }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
-                }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
-                }
+            it("MaxRecordDuration") {
+                expect(VoiceRecordStrategy.maxRecordDuration) <= 60
             }
         }
     }
