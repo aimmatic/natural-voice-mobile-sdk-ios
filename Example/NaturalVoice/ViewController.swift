@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         VoiceRecordStrategy.apiKey = "FKwmNOD4Q304NBXLKfWXYA0J5q1R/w"
         VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
-        VoiceRecordStrategy.maxRecordDuration = 10
-        VoiceRecordStrategy.maxRecordDurationPolicy = .userChoice
+        VoiceRecordStrategy.maxRecordDuration = 5
+        VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
     }
     
     @IBAction func recordTapped(sender: UIButton) {
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
                 break
             case .endByIdle:
                 //TODO:
+                print("end by idle")
                 break
             }
             switch response!.policy {
@@ -42,9 +43,11 @@ class ViewController: UIViewController {
                 print("with userchoice policy")
                 let controller = UIAlertController(title: "Send or abort", message: nil, preferredStyle: .alert)
                 controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { a in
+                    print("user chooses send")
                     response!.send()
                 }))
                 controller.addAction(UIAlertAction(title: "Abort", style: .cancel, handler: { a in
+                    print("user chooses abort")
                     response!.abort()
                 }))
                 self.present(controller, animated: true, completion: {})

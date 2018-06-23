@@ -15,7 +15,6 @@ public typealias VoiceRecordSent = ((VoiceRecordSendResponse?) -> Void)
 open class VoiceRecorder: NSObject {
     
     fileprivate static let instance = VoiceRecorder()
-    fileprivate var counter = VoiceCounter.shared
     fileprivate var locationService = VoiceLocationManager.shared
     fileprivate var recordStarted: VoiceRecordStarted?
     fileprivate var recordEnded: VoiceRecordEnded?
@@ -25,6 +24,8 @@ open class VoiceRecorder: NSObject {
     fileprivate var recordSettings: [String: Any]!
     fileprivate var recorder: AVAudioRecorder!
     fileprivate var audioFile: VoiceFile!
+    fileprivate var currentEndState = VoiceEndState.endByMax
+    fileprivate var currentPolicy = VoiceRecordStrategy.maxRecordDurationPolicy
     
     deinit {
         let notificationName = NSNotification.Name.AVAudioSessionInterruption
@@ -65,6 +66,8 @@ open class VoiceRecorder: NSObject {
         self.recordEnded = recordEnded
         self.recordSent = recordSent
         self.recordFailed = recordFailed
+        self.currentEndState = .endByMax
+        self.currentPolicy = VoiceRecordStrategy.maxRecordDurationPolicy
         if nil == self.recorder {
             self.recordPermission { granted in
                 if granted {
@@ -76,7 +79,7 @@ open class VoiceRecorder: NSObject {
     }
     
     open func stopRecording(policy: VoicePolicy) {
-        self.end(state: .endByUser, policy: policy)
+        self.forceStop(state: .endByUser, policy: policy)
     }
     
     //MARK: - Permission
@@ -101,10 +104,9 @@ open class VoiceRecorder: NSObject {
     //MARK: - Recording
     
     fileprivate func setupRecordSession() {
-        let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(AVAudioSessionCategoryRecord)
-            try session.setActive(true)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryRecord)
+            try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             self.recordFailed?(error)
         }
@@ -117,46 +119,21 @@ open class VoiceRecorder: NSObject {
             self.recorder.delegate = self
             self.recorder.isMeteringEnabled = false
             self.recorder.prepareToRecord()
-            self.recorder.record()
-            self.start()
+            self.recorder.record(forDuration: VoiceRecordStrategy.maxRecordDuration)
+            self.recordStarted?(self.audioMeta)
         } catch {
             self.recorder = nil
             self.recordFailed?(error)
         }
     }
     
-    fileprivate func start() {
-        self.recordStarted?(self.audioMeta)
-        self.counter.completedCount = {
-            self.end(state: .endByMax, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
-        }
-        self.counter.start()
-    }
-    
-    fileprivate func end(state: VoiceEndState, policy: VoicePolicy) {
+    fileprivate func forceStop(state: VoiceEndState, policy: VoicePolicy) {
         guard let recorder = self.recorder else { return }
         guard true == recorder.isRecording else { return }
+        self.currentEndState = state
+        self.currentPolicy = policy
         self.recorder.stop()
-        self.counter.stop()
-        let session = AVAudioSession.sharedInstance()
-        do { try session.setActive(false) } catch { }
-        let response = VoiceRecordEndResponse(state: state, policy: policy, onSend: {
-            self.sendFile()
-        }, onAbort: {
-            self.removeFile(url: self.audioFile.fileUrl)
-        })
-        self.recordEnded?(response)
-        switch policy {
-        case .userChoice:
-            //do nothing
-            break
-        case .sendImmediately:
-            self.sendFile()
-            break
-        case .cancel:
-            self.removeFile(url: self.audioFile.fileUrl)
-            break
-        }
+        do { try AVAudioSession.sharedInstance().setActive(false) } catch { }
     }
 
     fileprivate func sendFile() {
@@ -192,7 +169,7 @@ open class VoiceRecorder: NSObject {
         guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? NSNumber else { return }
         switch type.uintValue {
         case AVAudioSessionInterruptionType.began.rawValue:
-            self.end(state: .endByInterruption, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
+            self.forceStop(state: .endByInterruption, policy: VoiceRecordStrategy.maxRecordDurationPolicy)
             break
         default:
             break
@@ -204,6 +181,22 @@ extension VoiceRecorder: AVAudioRecorderDelegate {
     
     public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         self.recorder = nil
+        let response = VoiceRecordEndResponse(state: self.currentEndState, policy: self.currentPolicy, onSend: {
+            self.sendFile()
+        }, onAbort: {
+            self.removeFile(url: self.audioFile.fileUrl)
+        })
+        self.recordEnded?(response)
+        switch self.currentPolicy {
+        case .userChoice:
+            break
+        case .sendImmediately:
+            self.sendFile()
+            break
+        case .cancel:
+            self.removeFile(url: self.audioFile.fileUrl)
+            break
+        }
     }
     
     public func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
