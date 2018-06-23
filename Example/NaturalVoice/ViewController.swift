@@ -33,6 +33,9 @@ class ViewController: UIViewController {
             case .endByInterruption:
                 print("end by interruption")
                 break
+            case .endByIdle:
+                //TODO:
+                break
             }
             switch response!.policy {
             case .userChoice:

@@ -66,14 +66,39 @@ open class VoiceRecorder: NSObject {
         self.recordSent = recordSent
         self.recordFailed = recordFailed
         if nil == self.recorder {
-            self.setupRecordSession()
-            self.setupRecorder()
+            self.recordPermission { granted in
+                if granted {
+                    self.setupRecordSession()
+                    self.setupRecorder()
+                }
+            }
         }
     }
     
     open func stopRecording(policy: VoicePolicy) {
         self.end(state: .endByUser, policy: policy)
     }
+    
+    //MARK: - Permission
+    
+    func recordPermission(result: ((Bool) -> Void)?) {
+        let permission = AVAudioSession.sharedInstance().recordPermission()
+        switch permission {
+        case .granted:
+            result?(true)
+            break
+        case .denied:
+            result?(false)
+            break
+        case .undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission { granted in
+                result?(granted)
+            }
+            break
+        }
+    }
+    
+    //MARK: - Recording
     
     fileprivate func setupRecordSession() {
         let session = AVAudioSession.sharedInstance()
