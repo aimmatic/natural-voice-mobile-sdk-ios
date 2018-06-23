@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        VoiceRecordStrategy.apiKey = "Your Api Key"
+        VoiceRecordStrategy.apiKey = "FKwmNOD4Q304NBXLKfWXYA0J5q1R/w"
         VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
         VoiceRecordStrategy.maxRecordDuration = 10
         VoiceRecordStrategy.maxRecordDurationPolicy = .userChoice
