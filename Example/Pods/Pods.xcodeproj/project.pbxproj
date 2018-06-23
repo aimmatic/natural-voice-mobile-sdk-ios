@@ -88,6 +88,7 @@
 		86F89F88A7F91B685908055CBFFF355E /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D57BDA4E3A2C80EACB146F41D7945ED /* Quick-dummy.m */; };
 		8B55BD430033027AD5FF22D630DD9F62 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A0FFC6F317CEB4D9D3AAF3C6B2F79 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8CE9DF27A4719C681EE11C3FF7DBE26D /* VoiceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDBB14C2D41C3B088FFFDAD607556B /* VoiceFile.swift */; };
+		8F4E51A220DE77530000DD38 /* VoiceCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D0ACF9824954066517BCCDB443182 /* VoiceCounter.swift */; };
 		8F5E7B9B974D0C590BC2C5B0ABC2AA3B /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D64CF30D865049ECDF6ED698C8E613C /* QuickTestSuite.swift */; };
 		920ED29ADC888EA7CA382DF52CCDB4A0 /* VoiceMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD377604868070B4480183BD8F29C684 /* VoiceMeta.swift */; };
 		926538ADC0E14C8648AA158392B49BB1 /* VoiceMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2256F372D081C5C7E7316BF8D2C357 /* VoiceMediaType.swift */; };
@@ -120,7 +121,6 @@
 		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38441D006D887072AA9CE620E5C7D746 /* Validation.swift */; };
 		BC1DE3E6EFF1262A6079DE1A72DB51AA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6DA799DC8BEB0FE005BC76D1B5B1B7 /* XCTest.framework */; };
 		BC7B9761322C74FA27969BD55833BA47 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BE9F671FD5A0C051CE1F2D34796C4 /* Errors.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		BDDC996C14897F15892E91DEAA2E3509 /* VoiceCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D0ACF9824954066517BCCDB443182 /* VoiceCounter.swift */; };
 		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A0BD8CDDE47FB44995A839DA70DC58 /* ParameterEncoding.swift */; };
 		BE7269896117F2F70486861F831E38EE /* NaturalVoice-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE8921B360CC33BDFDD80929238D0D9 /* NaturalVoice-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE7E49EB83E9B8B4B06927F2E6B5156B /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CC9EBD38E1F2490AD9CA07D4D70D48 /* Closures.swift */; };
@@ -217,7 +217,7 @@
 		011E59C9A86777AD2B286F7A2816E992 /* Pods-NaturalVoice_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NaturalVoice_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		013E4264823EEBF15F72EF883CEB14DF /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
 		01B9BCCE1B7E7628CE4CC5B94F3861DE /* NaturalVoice-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NaturalVoice-prefix.pch"; sourceTree = "<group>"; };
-		02F4E520945AD5011AEBDAB27F56E2FC /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F4E520945AD5011AEBDAB27F56E2FC /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		034E76F720A7786CEACC853E368F50C4 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
 		034FE5B90D3003D0551BB30243C4409F /* VoiceRecordSendResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoiceRecordSendResult.swift; path = NaturalVoice/Classes/VoiceRecordSendResult.swift; sourceTree = "<group>"; };
 		03D665DECC29EA45286A20143BD40447 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
@@ -225,8 +225,8 @@
 		087C66A8786E9542CF1BD16A5BFF3D30 /* Pods-NaturalVoice_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NaturalVoice_Example-frameworks.sh"; sourceTree = "<group>"; };
 		09130C6A9623183B43FCAC557F86E4BA /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
 		09AF4F8773B0BDC4A10C6E8B0A9B8142 /* Pods-NaturalVoice_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NaturalVoice_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		0A6C5FE7653F06332FAA2E3CBD23CDE7 /* Pods_NaturalVoice_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NaturalVoice_Tests.framework; path = "Pods-NaturalVoice_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A93D32986E6BF871D3CC46128DCE817 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		0A6C5FE7653F06332FAA2E3CBD23CDE7 /* Pods_NaturalVoice_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaturalVoice_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A93D32986E6BF871D3CC46128DCE817 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
 		0C6D0ACF9824954066517BCCDB443182 /* VoiceCounter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoiceCounter.swift; path = NaturalVoice/Classes/VoiceCounter.swift; sourceTree = "<group>"; };
 		0EA08E01B1AC6E3E0CB0AB68C3AC9202 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		0F04F035A279E051098535F824B41331 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 		53A7080FFEC456AE78FFFD4B1850003C /* VoiceLanguage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoiceLanguage.swift; path = NaturalVoice/Classes/VoiceLanguage.swift; sourceTree = "<group>"; };
 		53ABF5C578047D497B8A7D35E1E0D344 /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
 		5546BC620D7F7960679186A373A08C5D /* VoiceLanguageManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoiceLanguageManager.swift; path = NaturalVoice/Classes/VoiceLanguageManager.swift; sourceTree = "<group>"; };
-		56268B0AD5DF4615574F0DA71608A319 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56268B0AD5DF4615574F0DA71608A319 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		562C0CB89E7DD552564B06CA1FB8DB37 /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
 		5673754B59651998523E5F63AC8CEAF8 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		589F0EA8C0AE30A097741861C66D07A4 /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		6901B74553E40D9C5B9FA18F8D66417B /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		698646ECD9200896A08047B1F1F5F4CD /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		69BADC7C8E2FF84EC104F869B96679FC /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlBadInstructionException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/CwlBadInstructionException.swift; sourceTree = "<group>"; };
-		6AC500708B16CE865232E0AE65BB71C3 /* NaturalVoice.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = NaturalVoice.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6AC500708B16CE865232E0AE65BB71C3 /* NaturalVoice.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = NaturalVoice.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6E07D63741448FCD30E2E0A1BCA22BF8 /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		6F3470E313E631FE7B286A444AF094A1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7030C3B82D2C08C0732D1D2338B73D6E /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		7236C4F8FEFBF73A6F17A273491F0E4F /* Pods-NaturalVoice_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NaturalVoice_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		72A8A43162F5621CFA11073175BA15C9 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		73B7354EAE23E25D2C00C5EB8E61AFD6 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
-		76FC19070C8089AD4FBB53539212A2DC /* Pods_NaturalVoice_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NaturalVoice_Example.framework; path = "Pods-NaturalVoice_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76FC19070C8089AD4FBB53539212A2DC /* Pods_NaturalVoice_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaturalVoice_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		775CDEADE16EF2C0E74A735BD34D0B1F /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		790C03CDE090F70EDFDBB95C8E7AC64D /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		7C04BA094B62960B07F6131D13954BFB /* Pods-NaturalVoice_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NaturalVoice_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -333,14 +333,14 @@
 		91D8A9F46026A7B80982CC9BDEA0BDBC /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
 		92A0BD8CDDE47FB44995A839DA70DC58 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		9343D5EFE8752482E0989FA4F1284F42 /* VoicePolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoicePolicy.swift; path = NaturalVoice/Classes/VoicePolicy.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95D016D5B824C3FAFD661E84F348A69F /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		96151274B5901A24ED186F7618FAB8D6 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		99C2D2F2452898105664FC6C540BF060 /* Pods-NaturalVoice_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NaturalVoice_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C54EC0FD8EE6B1066FDE370C8C8256F /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
 		9C695D5911C3324EE090B1F68BB9AA35 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		9D8138ADA2A7753ECF964F28176077BA /* VoiceResource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VoiceResource.swift; path = NaturalVoice/Classes/VoiceResource.swift; sourceTree = "<group>"; };
-		9E7AF63B309DD2503D0878BA7F675AD6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9E7AF63B309DD2503D0878BA7F675AD6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9F02A739100B7422F36AE23783BE8C24 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FECC9D76933958A2BA57EAF70CDE7BB /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Utils/Async.swift; sourceTree = "<group>"; };
 		A1CE36AC086A42B48353E12744C3CEE6 /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 		B03DF28754EFEE46D7103F7C0F00C131 /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
 		B0AD01E7D2EBE0A432A5A8E0B7E25634 /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
 		B16A3FD9EEEAF9629AE2E75D08EC39C8 /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
-		B20D0C8082E415CF9464494D982D22C4 /* NaturalVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NaturalVoice.framework; path = NaturalVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20D0C8082E415CF9464494D982D22C4 /* NaturalVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NaturalVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23F7A857E2519C225C458896C1545A3 /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		B3F69FE53D6BF2090C79DE0F76BDDC89 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		B6FE547159ED51FE788730E4DEF00F07 /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		C9EF7594C55F95F300F4922DE3D3D626 /* Pods-NaturalVoice_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NaturalVoice_Tests-dummy.m"; sourceTree = "<group>"; };
 		CB8C1FA4FFB2DE9FF6B7B11F815AD6BF /* Pods-NaturalVoice_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NaturalVoice_Tests-umbrella.h"; sourceTree = "<group>"; };
 		CC194611182D9ED73CCBCCA5AE6EE42D /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
-		CC39C41D56A8572F5B81F97EA8EE9503 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC39C41D56A8572F5B81F97EA8EE9503 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8F16C27A56E42734B8B92278D6A9D0 /* Pods-NaturalVoice_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NaturalVoice_Example-resources.sh"; sourceTree = "<group>"; };
 		D26A8AC742D8A9D65682E485466A92F2 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		D8C8F18EBD2FD2E9898B06EC603462C8 /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 		EE7A9ABD4AFA0E8B024B507CB51A2DBB /* Pods-NaturalVoice_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NaturalVoice_Example-umbrella.h"; sourceTree = "<group>"; };
 		F07AB61AE70DC53B639186F196CD355F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F327C7E8545FFA4319561D53FB9C9E0D /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
-		F55EE3F3B371B1B8846DB3F4F4F8DD07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		F55EE3F3B371B1B8846DB3F4F4F8DD07 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F5A2311CAA8062D47B334C01B4B109E8 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		F5BCA65344C24036CED190D6A81795F4 /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
 		F861850AE845709CA18027C8914415F0 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
@@ -484,7 +484,6 @@
 				38441D006D887072AA9CE620E5C7D746 /* Validation.swift */,
 				7BE3E3149205008AC17E03D914D6B8D4 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -539,7 +538,6 @@
 				00B3E58D66284669F69727D7341D84D1 /* XCTestSuite+QuickTestSuiteBuilder.m */,
 				5D00234667F21308F2F7B3D05235FFB9 /* Support Files */,
 			);
-			name = Quick;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -776,7 +774,6 @@
 				F327C7E8545FFA4319561D53FB9C9E0D /* XCTestObservationCenter+Register.m */,
 				309646F86D64B00C985CACFDEB678964 /* Support Files */,
 			);
-			name = Nimble;
 			path = Nimble;
 			sourceTree = "<group>";
 		};
@@ -1157,13 +1154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3EF00075986D2EB119204E1A005462F /* NaturalVoice-dummy.m in Sources */,
-				BDDC996C14897F15892E91DEAA2E3509 /* VoiceCounter.swift in Sources */,
 				3DFFE40570286E81A8E1DDE88CBF0BB8 /* VoiceEndState.swift in Sources */,
 				8CE9DF27A4719C681EE11C3FF7DBE26D /* VoiceFile.swift in Sources */,
 				171BD5C8DEB6DE8A7FB0B28A624B1389 /* VoiceFileMeta.swift in Sources */,
 				C6730578F002E89D223BD070EC4652E0 /* VoiceLanguage.swift in Sources */,
 				D9FD04F147221A8EA2DB6832C786BD56 /* VoiceLanguageManager.swift in Sources */,
 				60BD80623489DD84C99CD423BB1E8577 /* VoiceLocation.swift in Sources */,
+				8F4E51A220DE77530000DD38 /* VoiceCounter.swift in Sources */,
 				AE80086E1A57F6CB2D63E0CC828E82B5 /* VoiceLocationManager.swift in Sources */,
 				926538ADC0E14C8648AA158392B49BB1 /* VoiceMediaType.swift in Sources */,
 				920ED29ADC888EA7CA382DF52CCDB4A0 /* VoiceMeta.swift in Sources */,

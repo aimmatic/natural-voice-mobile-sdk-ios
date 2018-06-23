@@ -26,6 +26,9 @@ open class VoiceRecorder: NSObject {
     fileprivate var audioFile: VoiceFile!
     fileprivate var currentEndState = VoiceEndState.endByMax
     fileprivate var currentPolicy = VoiceRecordStrategy.maxRecordDurationPolicy
+    fileprivate var counter = VoiceCounter.shared
+    fileprivate var lowPassResults: Float = 0.0
+    fileprivate var speechTimeout: Float = 0.0
     
     deinit {
         let notificationName = NSNotification.Name.AVAudioSessionInterruption
@@ -46,6 +49,7 @@ open class VoiceRecorder: NSObject {
         let messageLanguage = "Language not set"
         assert(VoiceRecordStrategy.language != nil, messageLanguage)
         
+        self.counter.callbackTimer = { self.micLevelChecker() }
         self.audioMeta = VoiceFileMeta()
         self.audioMeta.bitRate = VoiceMeta.bitRate
         self.audioMeta.sampleRate = VoiceMeta.sampleRate
@@ -117,9 +121,10 @@ open class VoiceRecorder: NSObject {
         do {
             self.recorder = try AVAudioRecorder(url: self.audioFile.fileUrl, settings: self.recordSettings)
             self.recorder.delegate = self
-            self.recorder.isMeteringEnabled = false
+            self.recorder.isMeteringEnabled = true
             self.recorder.prepareToRecord()
             self.recorder.record(forDuration: VoiceRecordStrategy.maxRecordDuration)
+            self.counter.start()
             self.recordStarted?(self.audioMeta)
         } catch {
             self.recorder = nil
@@ -164,6 +169,20 @@ open class VoiceRecorder: NSObject {
         }
     }
     
+    fileprivate func micLevelChecker() {
+        self.recorder.updateMeters()
+        let threshold: Float = 0.099
+        let alpha: Float = 0.05
+        let decibels = self.recorder.peakPower(forChannel: 0)
+        let peakPower = Float(pow(10, (alpha * decibels)))
+        self.lowPassResults = alpha * peakPower + (1.0 - alpha) * self.lowPassResults
+        if self.lowPassResults > threshold {
+            print("Hear \(self.lowPassResults)")
+        } else {
+            print("Silence \(self.lowPassResults)")
+        }
+    }
+    
     @objc func handleInterruption(object: NSNotification) {
         guard let userInfo = object.userInfo else { return }
         guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? NSNumber else { return }
@@ -181,6 +200,7 @@ extension VoiceRecorder: AVAudioRecorderDelegate {
     
     public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         self.recorder = nil
+        self.counter.stop()
         let response = VoiceRecordEndResponse(state: self.currentEndState, policy: self.currentPolicy, onSend: {
             self.sendFile()
         }, onAbort: {

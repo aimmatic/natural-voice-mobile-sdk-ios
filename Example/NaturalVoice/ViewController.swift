@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         VoiceRecordStrategy.apiKey = "FKwmNOD4Q304NBXLKfWXYA0J5q1R/w"
         VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
-        VoiceRecordStrategy.maxRecordDuration = 5
+        VoiceRecordStrategy.maxRecordDuration = 50
         VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
     }
     

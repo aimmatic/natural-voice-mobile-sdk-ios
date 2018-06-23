@@ -8,25 +8,23 @@
 class VoiceCounter {
     
     fileprivate static let instance = VoiceCounter()
-    fileprivate let interval: TimeInterval = VoiceRecordStrategy.maxRecordDuration
     fileprivate var timer: Timer?
-    var completedCount: (() -> Void)?
+    var callbackTimer: (() -> Void)?
     
     static var shared: VoiceCounter {
         return self.instance
     }
     
     func start() {
-        self.stop()
-        self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(self.count(timer:)), userInfo: nil, repeats: false)
-    }
-    
-    @objc func count(timer: Timer) {
-        self.stop()
-        self.completedCount?()
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ticker(timer:)), userInfo: nil, repeats: true)
     }
     
     func stop() {
         self.timer?.invalidate()
+    }
+    
+    @objc func ticker(timer: Timer) {
+        self.callbackTimer?()
     }
 }
