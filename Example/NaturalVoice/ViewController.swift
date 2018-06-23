@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
         VoiceRecordStrategy.maxRecordDuration = 50
         VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
+        VoiceRecordStrategy.speechTimeout = 4.0
+        VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
     }
     
     @IBAction func recordTapped(sender: UIButton) {

@@ -9,6 +9,7 @@ class VoiceCounter {
     
     fileprivate static let instance = VoiceCounter()
     fileprivate var timer: Timer?
+    var interval: TimeInterval = 0.01
     var callbackTimer: (() -> Void)?
     
     static var shared: VoiceCounter {
@@ -17,7 +18,7 @@ class VoiceCounter {
     
     func start() {
         self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ticker(timer:)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(ticker(timer:)), userInfo: nil, repeats: true)
     }
     
     func stop() {

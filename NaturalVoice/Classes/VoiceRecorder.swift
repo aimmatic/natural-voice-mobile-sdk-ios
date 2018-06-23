@@ -28,7 +28,7 @@ open class VoiceRecorder: NSObject {
     fileprivate var currentPolicy = VoiceRecordStrategy.maxRecordDurationPolicy
     fileprivate var counter = VoiceCounter.shared
     fileprivate var lowPassResults: Float = 0.0
-    fileprivate var speechTimeout: Float = 0.0
+    fileprivate var speechTimeout: TimeInterval = 0.0
     
     deinit {
         let notificationName = NSNotification.Name.AVAudioSessionInterruption
@@ -124,6 +124,7 @@ open class VoiceRecorder: NSObject {
             self.recorder.isMeteringEnabled = true
             self.recorder.prepareToRecord()
             self.recorder.record(forDuration: VoiceRecordStrategy.maxRecordDuration)
+            self.speechTimeout = 0
             self.counter.start()
             self.recordStarted?(self.audioMeta)
         } catch {
@@ -177,9 +178,12 @@ open class VoiceRecorder: NSObject {
         let peakPower = Float(pow(10, (alpha * decibels)))
         self.lowPassResults = alpha * peakPower + (1.0 - alpha) * self.lowPassResults
         if self.lowPassResults > threshold {
-            print("Hear \(self.lowPassResults)")
+            self.speechTimeout = 0
         } else {
-            print("Silence \(self.lowPassResults)")
+            self.speechTimeout = self.speechTimeout + self.counter.interval
+            if self.speechTimeout >= VoiceRecordStrategy.speechTimeout {
+                self.forceStop(state: .endByIdle, policy: VoiceRecordStrategy.speechTimeoutPolicy)
+            }
         }
     }
     
