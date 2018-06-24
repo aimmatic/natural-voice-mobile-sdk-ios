@@ -9,7 +9,7 @@ class VoiceCounter {
     
     fileprivate static let instance = VoiceCounter()
     fileprivate var timer: Timer?
-    var interval: TimeInterval = 0.01
+    fileprivate var interval = VoiceResource.callbackInterval
     var callbackTimer: (() -> Void)?
     
     static var shared: VoiceCounter {

@@ -6,6 +6,7 @@
 //
 
 struct VoiceResource {
+    static let callbackInterval: TimeInterval = 0.01
     static let maxDuration: TimeInterval = 60
     static let speechTimeout: TimeInterval = 2
     static let host: String = "http://api.aimmatic.info"

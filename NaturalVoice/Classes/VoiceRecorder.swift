@@ -117,6 +117,7 @@ open class VoiceRecorder: NSObject {
     }
     
     fileprivate func setupRecorder() {
+        self.speechTimeout = 0
         self.audioFile = VoiceFile(audioType: .audioWave)
         do {
             self.recorder = try AVAudioRecorder(url: self.audioFile.fileUrl, settings: self.recordSettings)
@@ -124,7 +125,6 @@ open class VoiceRecorder: NSObject {
             self.recorder.isMeteringEnabled = true
             self.recorder.prepareToRecord()
             self.recorder.record(forDuration: VoiceRecordStrategy.maxRecordDuration)
-            self.speechTimeout = 0
             self.counter.start()
             self.recordStarted?(self.audioMeta)
         } catch {
@@ -180,8 +180,10 @@ open class VoiceRecorder: NSObject {
         if self.lowPassResults > threshold {
             self.speechTimeout = 0
         } else {
-            self.speechTimeout = self.speechTimeout + self.counter.interval
-            if self.speechTimeout >= VoiceRecordStrategy.speechTimeout {
+            let interval = VoiceResource.callbackInterval
+            let maxSpeechTimeout = VoiceRecordStrategy.speechTimeout
+            self.speechTimeout = self.speechTimeout + interval
+            if self.speechTimeout >= maxSpeechTimeout {
                 self.forceStop(state: .endByIdle, policy: VoiceRecordStrategy.speechTimeoutPolicy)
             }
         }
