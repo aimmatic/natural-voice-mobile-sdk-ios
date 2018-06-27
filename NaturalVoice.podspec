@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'NaturalVoice'
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.summary          = 'Public beta client library to integrate voice feedback using Natural Voice.'
     s.description      = 'Public beta client library to integrate voice feedback using Natural Voice (https://www.naturalvoice.ai) functions powered by Cloud Speech and Cloud Natural Language from Google Cloud Platform™ service'
     s.homepage         = 'https://github.com/aimmatic/natural-voice-mobile-sdk-ios'

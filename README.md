@@ -17,15 +17,21 @@ Example:
 
 # Usage #
 
+## Requirements ##
+
+• iOS 8.0+
+
+• xCode 9
+
 ## Cocoapods ##
 
-```pod
+```bash
 pod 'NaturalVoice'
 ```
 
 ## Install ##
 
-```install
+```bash
 pod install
 ```
 
@@ -33,7 +39,7 @@ pod install
 
 Natural Voice requires location service and microphone permission, you need to add these keys to Info.plist
 
-```info.plist
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string></string>
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -46,22 +52,24 @@ Natural Voice requires location service and microphone permission, you need to a
 
 ### Get supported languages ###
 
-```languages
+```swift
 let supportedLanguages = AudioLanguageManager.shared.supportLanguages
 ```
 
 ### Configuration ###
 
-```configuration
+```swift
 VoiceRecordStrategy.apiKey = "Your Api Key"
 VoiceRecordStrategy.language = language
 VoiceRecordStrategy.maxRecordDuration = 30
 VoiceRecordStrategy.maxRecordDurationPolicy = .sendImmediately
+VoiceRecordStrategy.speechTimeout = 2
+VoiceRecordStrategy.speechTimeoutPolicy = .sendImmediately
 ```
 
 ### Start recording ###
 
-```startrecording
+```swift
 VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
 }, recordEnded: { response in
@@ -77,7 +85,7 @@ VoiceRecorder.shared.startRecording(recordStarted: { meta in
 
 When recording is started
 
-```recordStarted
+```swift
 let recordStared: VoiceRecordStarted = { (meta: VoiceFileMeta?) in
 
 }
@@ -85,7 +93,7 @@ let recordStared: VoiceRecordStarted = { (meta: VoiceFileMeta?) in
 
 When recording is finished
 
-```recordEnded
+```swift
 let recordEnded: VoiceRecordEnded = { (response: VoiceRecordEndResponse?) in
             
 }
@@ -93,7 +101,7 @@ let recordEnded: VoiceRecordEnded = { (response: VoiceRecordEndResponse?) in
 
 When recording is sent
 
-```recordSent
+```swift
 let recordSent: VoiceRecordSent = { (response: VoiceRecordSendResponse?) in
             
 }
@@ -101,7 +109,7 @@ let recordSent: VoiceRecordSent = { (response: VoiceRecordSendResponse?) in
 
 When recording is failed
 
-```recordFailed
+```swift
 let recordFailed: VoiceRecordFailed = { (error: Error?) in
             
 }
@@ -109,7 +117,7 @@ let recordFailed: VoiceRecordFailed = { (error: Error?) in
 
 Handle policy `.userChoice` when recording is finished
 
-```userChoice
+```swift
 if response?.policy == .userChoice {
     let controller = UIAlertController(title: "Send or Abort?", message: nil, preferredStyle: .alert)
     controller.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
@@ -126,22 +134,25 @@ if response?.policy == .userChoice {
 
 ### Stop recording ###
 
-This will override policy that was set in `VoiceRecordStrategy.maxRecordDurationPolicy`
+This will override policy that was set in 
+```swift
+VoiceRecordStrategy.maxRecordDurationPolicy
+```
 
 Stop with decision
 
-```stoprecording
+```swift
 VoiceRecorder.shared.stopRecording(policy: .userChoice)
 ```
 
 Stop and send immediately
 
-```stoprecording
+```swift
 VoiceRecorder.shared.stopRecording(policy: .sendImmediately)
 ```
 
 Stop and cancel sending
 
-```stoprecording
+```swift
 VoiceRecorder.shared.stopRecording(policy: .cancel)
 ```

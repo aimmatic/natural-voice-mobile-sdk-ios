@@ -180,11 +180,13 @@ open class VoiceRecorder: NSObject {
         if self.lowPassResults > threshold {
             self.speechTimeout = 0
         } else {
-            let interval = VoiceResource.callbackInterval
-            let maxSpeechTimeout = VoiceRecordStrategy.speechTimeout
-            self.speechTimeout = self.speechTimeout + interval
-            if self.speechTimeout >= maxSpeechTimeout {
-                self.forceStop(state: .endByIdle, policy: VoiceRecordStrategy.speechTimeoutPolicy)
+            let configuredTimeout = VoiceRecordStrategy.speechTimeout
+            if configuredTimeout > 0 {
+                let interval = VoiceResource.callbackInterval
+                self.speechTimeout = self.speechTimeout + interval
+                if self.speechTimeout >= configuredTimeout {
+                    self.forceStop(state: .endByIdle, policy: VoiceRecordStrategy.speechTimeoutPolicy)
+                }
             }
         }
     }
