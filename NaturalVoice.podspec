@@ -19,10 +19,9 @@ Pod::Spec.new do |s|
     s.source_files = 'NaturalVoice/Classes/**/*'
     s.swift_version = '4.1'
     s.dependency 'Alamofire', '~> 4.7'
-    # s.resource_bundles = {
-    #   'NaturalVoice' => ['NaturalVoice/Assets/*.png']
-    # }
-    
+    #s.resource_bundles = {
+    #    'NaturalVoice' => ['NaturalVoice/Assets/*.json']
+    #}
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'
     # s.dependency 'AFNetworking', '~> 2.3'

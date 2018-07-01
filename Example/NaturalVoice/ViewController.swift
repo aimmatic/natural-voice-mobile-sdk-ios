@@ -13,12 +13,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        VoiceRecordStrategy.apiKey = "FKwmNOD4Q304NBXLKfWXYA0J5q1R/w"
-        VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
-        VoiceRecordStrategy.maxRecordDuration = 50
-        VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
-        VoiceRecordStrategy.speechTimeout = 4.0
-        VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
+        VoiceLanguageManager.shared.getSupportLanguages { languages in
+            VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
+            VoiceRecordStrategy.maxRecordDuration = 50
+            VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
+            VoiceRecordStrategy.speechTimeout = 4.0
+            VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
+        }
     }
     
     @IBAction func recordTapped(sender: UIButton) {
@@ -36,7 +37,6 @@ class ViewController: UIViewController {
                 print("end by interruption")
                 break
             case .endByIdle:
-                //TODO:
                 print("end by idle")
                 break
             }

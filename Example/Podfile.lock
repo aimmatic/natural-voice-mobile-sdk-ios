@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.7.2)
-  - NaturalVoice (1.0.0):
+  - NaturalVoice (1.0.1):
     - Alamofire (~> 4.7)
   - Nimble (7.0.3)
   - Quick (1.2.0)
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  NaturalVoice: d7b3323422a753a357e30631ab8a2ab22439582e
+  NaturalVoice: 1111397c7814437e4fa87dbdbe46549737b4f318
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 

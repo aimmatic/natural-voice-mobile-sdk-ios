@@ -13,7 +13,7 @@ typealias VoiceSenderResult = ((Data?, Error?) -> Void)
 class VoiceSender: NSObject {
     
     func sendFile(file: VoiceFile, loc: VoiceLocation, meta: VoiceFileMeta, result: VoiceSenderResult?) {
-        let headers = ["Authorization": "AimMatic \(VoiceRecordStrategy.apiKey)"]
+        let headers = ["Authorization": "AimMatic \(VoiceResource.apiKey!)"]
         let threshold = SessionManager.multipartFormDataEncodingMemoryThreshold
         let url = VoiceResource.host + VoiceResource.apiVersion + VoiceResource.naturalVoice
         let language = VoiceRecordStrategy.language!.bcp47Code

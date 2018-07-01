@@ -6,7 +6,6 @@
 //
 
 public struct VoiceRecordStrategy {
-    public static var apiKey: String = ""
     public static var maxRecordDuration: TimeInterval = VoiceResource.maxDuration
     public static var speechTimeout: TimeInterval =  VoiceResource.speechTimeout
     public static var maxRecordDurationPolicy = VoicePolicy.sendImmediately

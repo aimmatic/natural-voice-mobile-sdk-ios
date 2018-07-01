@@ -42,13 +42,6 @@ open class VoiceRecorder: NSObject {
     public override init() {
         super.init()
         
-        let messageDuration = "Record duration must not be longer than \(VoiceResource.maxDuration)"
-        assert(VoiceRecordStrategy.maxRecordDuration <= VoiceResource.maxDuration , messageDuration)
-        let messageApiKey = "Invalid api key"
-        assert(VoiceRecordStrategy.apiKey != "", messageApiKey)
-        let messageLanguage = "Language not set"
-        assert(VoiceRecordStrategy.language != nil, messageLanguage)
-        
         self.counter.callbackTimer = { self.micLevelChecker() }
         self.audioMeta = VoiceFileMeta()
         self.audioMeta.bitRate = VoiceMeta.bitRate
@@ -66,6 +59,24 @@ open class VoiceRecorder: NSObject {
     }
     
     open func startRecording(recordStarted: VoiceRecordStarted?, recordEnded: VoiceRecordEnded?, recordSent: VoiceRecordSent?, recordFailed: VoiceRecordFailed?) {
+        
+        guard let apiKey = VoiceResource.apiKey, apiKey != "" else {
+            let description = VoiceResource.apiKeyDescription
+            let message = "ApiKey is invalid, please add key \(description) with valid apikey value in Info.plist."
+            preconditionFailure(message)
+        }
+        
+        guard VoiceResource.maxDuration >= VoiceRecordStrategy.maxRecordDuration else {
+            let description = VoiceResource.maxDuration
+            let message = "Max record duration must not be longer than \(description)."
+            preconditionFailure(message)
+        }
+        
+        guard nil != VoiceRecordStrategy.language else {
+            let message = "Speech language has not been set."
+            preconditionFailure(message)
+        }
+        
         self.recordStarted = recordStarted
         self.recordEnded = recordEnded
         self.recordSent = recordSent

@@ -41,25 +41,33 @@ Natural Voice requires location service and microphone permission, you need to a
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
-<string></string>
+<string>YOUR_DESCRIPTION</string>
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string></string>
+<string>YOUR_DESCRIPTION</string>
 <key>NSLocationWhenInUseUsageDescription</key>
-<string></string>
+<string>YOUR_DESCRIPTION</string>
 ```
+
+Add your ApiKey in Info.plist
+
+```xml
+<key>AimMaticNaturalVoiceApiKeyDescription</key>
+<string>YOUR_API_KEY</string>
+```
+
+
 
 ## Using Voice Service ##
 
 ### Get supported languages ###
 
 ```swift
-let supportedLanguages = AudioLanguageManager.shared.supportLanguages
+VoiceLanguageManager.shared.getSupportLanguages { languages in }
 ```
 
 ### Configuration ###
 
 ```swift
-VoiceRecordStrategy.apiKey = "Your Api Key"
 VoiceRecordStrategy.language = language
 VoiceRecordStrategy.maxRecordDuration = 30
 VoiceRecordStrategy.maxRecordDurationPolicy = .sendImmediately
