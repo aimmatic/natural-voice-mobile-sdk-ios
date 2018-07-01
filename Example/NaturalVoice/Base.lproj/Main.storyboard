@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-xk-q1u">
-                                <rect key="frame" x="117" y="69" width="140" height="30"/>
+                                <rect key="frame" x="117" y="230" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PID-vq-tgW"/>
@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-S9-yFh">
-                                <rect key="frame" x="117.5" y="229" width="140" height="30"/>
+                                <rect key="frame" x="117.5" y="390" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8kU-kf-XKi"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2S-TY-mxf">
-                                <rect key="frame" x="117.5" y="309" width="140" height="30"/>
+                                <rect key="frame" x="117.5" y="470" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ZYk-GR-efS"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lv-VU-1oG">
-                                <rect key="frame" x="117" y="149" width="140" height="30"/>
+                                <rect key="frame" x="117" y="310" width="140" height="30"/>
                                 <color key="backgroundColor" red="0.11416437140000001" green="0.64334664269999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ECK-h0-lgq"/>
@@ -80,7 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LTJ-xk-q1u" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="49" id="7oc-oB-07J"/>
+                            <constraint firstItem="LTJ-xk-q1u" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="210" id="7oc-oB-07J"/>
                             <constraint firstItem="G2S-TY-mxf" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="InS-H8-iVB"/>
                             <constraint firstItem="7Lv-VU-1oG" firstAttribute="top" secondItem="LTJ-xk-q1u" secondAttribute="bottom" constant="50" id="Lq6-7e-dUu"/>
                             <constraint firstItem="7Lv-VU-1oG" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="T4G-jN-Kk0"/>
@@ -93,6 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>

@@ -11,18 +11,43 @@ import NaturalVoice
 
 class ViewController: UIViewController {
 
+    var languages: [VoiceLanguage] = []
+    var pickerTitles: [String] = []
+    var pickerView: UIPickerView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        VoiceRecordStrategy.maxRecordDuration = 50
+        VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
+        VoiceRecordStrategy.speechTimeout = 4.0
+        VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
+        
         VoiceLanguageManager.shared.getSupportLanguages { languages in
-            VoiceRecordStrategy.language = VoiceLanguageManager.shared.getLanguage(bcp47Code: "en-US")
-            VoiceRecordStrategy.maxRecordDuration = 50
-            VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
-            VoiceRecordStrategy.speechTimeout = 4.0
-            VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
+            var pickerTitles = ["Choose Language"]
+            pickerTitles.append(contentsOf: languages.map { $0.displayLang })
+            self.pickerTitles = pickerTitles
+            self.languages = languages
+            self.pickerView = UIPickerView(frame: .zero)
+            self.pickerView?.dataSource = self
+            self.pickerView?.delegate = self
+            self.view.addSubview(self.pickerView!)
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        self.pickerView?.frame = CGRect(x: 0, y: 40, width: self.view.bounds.width, height: 165)
+    }
+    
     @IBAction func recordTapped(sender: UIButton) {
+        
+        guard nil != VoiceRecordStrategy.language else {
+            let controller = UIAlertController(title: nil, message: "Please select language", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            self.present(controller, animated: true, completion: {})
+            return
+        }
+        
         VoiceRecorder.shared.startRecording(recordStarted: { meta in
             print("sampleRate: \(meta!.sampleRate)\nchannels: \(meta!.channels)\nbitRate: \(meta!.bitRate)")
         }, recordEnded: { response in
@@ -87,6 +112,33 @@ class ViewController: UIViewController {
     
     @IBAction func stopAndCancelTapped(sender: UIButton) {
         VoiceRecorder.shared.stopRecording(policy: .cancel)
+    }
+}
+
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 32
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.pickerTitles.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerTitles[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row > 0 {
+            VoiceRecordStrategy.language = self.languages[row - 1]
+        } else {
+            VoiceRecordStrategy.language = nil
+        }
     }
 }
 
