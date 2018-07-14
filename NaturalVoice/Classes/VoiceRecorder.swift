@@ -154,6 +154,18 @@ open class VoiceRecorder: NSObject {
     }
 
     fileprivate func sendFile() {
+        let encoder = VoiceRecordStrategy.encoder
+        switch encoder {
+        case .wave:
+            self.sendWave()
+            break
+        case .flac:
+            self.sendFlac()
+            break
+        }
+    }
+    
+    fileprivate func sendWave() {
         let location = self.locationService.location
         let sender = VoiceSender()
         sender.sendFile(file: self.audioFile, loc: location, meta: self.audioMeta) { data, error in
@@ -170,6 +182,60 @@ open class VoiceRecorder: NSObject {
                 let response = VoiceRecordSendResponse(result: result, status: status, error: nil)
                 self.recordSent?(response)
             }
+        }
+    }
+    
+    fileprivate func sendFlac() {
+        if let pcmData = try? Data(contentsOf: self.audioFile.fileUrl), let wavData = WaveHeader.pcm(toWav: pcmData, totalLength: Int32(pcmData.count)) {
+            do {
+                try wavData.write(to: self.audioFile.fileUrl, options: Data.WritingOptions.atomic)
+                let wave_file_in = NSString(string: self.audioFile.fileUrl.path).utf8String
+                let flacFile = VoiceFile(audioType: .audioFlac)
+                let flac_file_out = NSString(string: flacFile.fileUrl.path).utf8String
+                let status = convertWaveToFlac(wave_file_in, flac_file_out)
+                if 0 == status {
+                    let location = self.locationService.location
+                    let sender = VoiceSender()
+                    sender.sendFile(file: flacFile, loc: location, meta: self.audioMeta) { data, error in
+                        if let error = error {
+                            self.removeFile(url: self.audioFile.fileUrl)
+                            self.removeFile(url: flacFile.fileUrl)
+                            let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
+                            let status = VoiceRecordSendStatus.failure
+                            let response = VoiceRecordSendResponse(result: result, status: status, error: error)
+                            self.recordSent?(response)
+                        } else {
+                            self.removeFile(url: self.audioFile.fileUrl)
+                            self.removeFile(url: flacFile.fileUrl)
+                            let result = VoiceRecordSendResult(message: "Success", data: data)
+                            let status = VoiceRecordSendStatus.success
+                            let response = VoiceRecordSendResponse(result: result, status: status, error: nil)
+                            self.recordSent?(response)
+                        }
+                    }
+                } else {
+                    self.removeFile(url: self.audioFile.fileUrl)
+                    let error = NSError(domain: "Error coverting flac.", code: 0, userInfo: nil)
+                    let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
+                    let status = VoiceRecordSendStatus.failure
+                    let response = VoiceRecordSendResponse(result: result, status: status, error: error)
+                    self.recordSent?(response)
+                }
+            } catch {
+                self.removeFile(url: self.audioFile.fileUrl)
+                let error = NSError(domain: "Error coverting flac.", code: 0, userInfo: nil)
+                let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
+                let status = VoiceRecordSendStatus.failure
+                let response = VoiceRecordSendResponse(result: result, status: status, error: error)
+                self.recordSent?(response)
+            }
+        } else {
+            self.removeFile(url: self.audioFile.fileUrl)
+            let error = NSError(domain: "Error coverting flac.", code: 0, userInfo: nil)
+            let result = VoiceRecordSendResult(message: error.localizedDescription, data: nil)
+            let status = VoiceRecordSendStatus.failure
+            let response = VoiceRecordSendResponse(result: result, status: status, error: error)
+            self.recordSent?(response)
         }
     }
     

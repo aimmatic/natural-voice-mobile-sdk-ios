@@ -6,20 +6,21 @@
 //
 
 enum VoiceMediaType {
-    
+
     case audioWave
+    case audioFlac
     
     var mediaType: String {
         switch self {
-        case .audioWave:
-            return "audio/wav"
+        case .audioWave: return "audio/wav"
+        case .audioFlac: return "audio/flac"
         }
     }
     
     var extensionString: String {
         switch self {
-        case .audioWave:
-            return "wav"
+        case .audioWave: return "wav"
+        case .audioFlac: return "flac"
         }
     }
 }

@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "FlacConverter.h"
+#import "WaveHeader.h"
 
 FOUNDATION_EXPORT double NaturalVoiceVersionNumber;
 FOUNDATION_EXPORT const unsigned char NaturalVoiceVersionString[];

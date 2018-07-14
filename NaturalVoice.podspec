@@ -16,13 +16,8 @@ Pod::Spec.new do |s|
     s.author           = { 'Aimmatic Dev Team' => 'dev@aimmatic.com' }
     s.source           = { :git => 'https://github.com/aimmatic/natural-voice-mobile-sdk-ios.git', :tag => s.version.to_s }
     s.ios.deployment_target = '8.0'
-    s.source_files = 'NaturalVoice/Classes/**/*'
+    s.vendored_frameworks = 'NaturalVoice/Classes/Flac/FLACiOS.framework'
+    s.source_files = 'NaturalVoice/Classes/*.{swift}', 'NaturalVoice/Classes/Flac/*.{c,m,h}', 'NaturalVoice/Classes/Flac/FLACiOS.framework/Headers/*.h'
     s.swift_version = '4.1'
     s.dependency 'Alamofire', '~> 4.7'
-    #s.resource_bundles = {
-    #    'NaturalVoice' => ['NaturalVoice/Assets/*.json']
-    #}
-    # s.public_header_files = 'Pod/Classes/**/*.h'
-    # s.frameworks = 'UIKit', 'MapKit'
-    # s.dependency 'AFNetworking', '~> 2.3'
 end

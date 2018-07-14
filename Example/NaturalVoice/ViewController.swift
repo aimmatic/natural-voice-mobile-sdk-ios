@@ -17,11 +17,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        VoiceRecordStrategy.encoder = VoiceEncoder.flac
         VoiceRecordStrategy.maxRecordDuration = 50
-        VoiceRecordStrategy.maxRecordDurationPolicy = .cancel
+        VoiceRecordStrategy.maxRecordDurationPolicy = .sendImmediately
         VoiceRecordStrategy.speechTimeout = 4.0
-        VoiceRecordStrategy.speechTimeoutPolicy = .userChoice
+        VoiceRecordStrategy.speechTimeoutPolicy = .sendImmediately
         
         VoiceLanguageManager.shared.getSupportLanguages { languages in
             var pickerTitles = ["Choose Language"]

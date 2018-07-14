@@ -6,6 +6,7 @@
 //
 
 public struct VoiceRecordStrategy {
+    public static var encoder: VoiceEncoder = VoiceEncoder.wave
     public static var maxRecordDuration: TimeInterval = VoiceResource.maxDuration
     public static var speechTimeout: TimeInterval =  VoiceResource.speechTimeout
     public static var maxRecordDurationPolicy = VoicePolicy.sendImmediately
