@@ -62,7 +62,9 @@ Add your ApiKey in Info.plist
 ### Get supported languages ###
 
 ```swift
-VoiceLanguageManager.shared.getSupportLanguages { languages in }
+VoiceLanguageManager.shared.getSupportLanguages { (languages: [VoiceLanguage]) in
+
+}
 ```
 
 ### Configuration ###
@@ -143,6 +145,7 @@ if response?.policy == .userChoice {
 ### Stop recording ###
 
 This will override policy that was set in 
+
 ```swift
 VoiceRecordStrategy.maxRecordDurationPolicy
 ```
