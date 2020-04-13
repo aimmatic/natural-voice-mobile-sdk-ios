@@ -1,14 +1,11 @@
 # Natural Voice Mobile SDK For iOS #
+This library allows you to add our voice reply functions into your iOS app.
 
-This library allows you to integrate Natural Voice functions into your iOS app.
+## Read This First ##
+Requires a plan and an API key.
 
-Requires API key. For an API key you may contact our solution desk.
-
-https://www.aimmatic.com/solution-desk.html
-
-mailto:solution.desk@aimmatic.com
-
-Please allow up to 24 hours for a response.
+## Free Plan ##
+Sign up for the free plan [here](https://www.aimmatic.com/store/p1/free-plan.html), in less than 30 seconds you get an email order confirmation with a link to create your secure login to the Developer Console. Login to the developer console to create an app, create an API key, and access the API Reference.
 
 # Usage #
 
@@ -100,7 +97,7 @@ When recording is finished
 
 ```swift
 let recordEnded: VoiceRecordEnded = { (response: VoiceRecordEndResponse?) in
-            
+
 }
 ```
 
@@ -108,7 +105,7 @@ When recording is sent
 
 ```swift
 let recordSent: VoiceRecordSent = { (response: VoiceRecordSendResponse?) in
-            
+
 }
 ```
 
@@ -116,7 +113,7 @@ When recording is failed
 
 ```swift
 let recordFailed: VoiceRecordFailed = { (error: Error?) in
-            
+
 }
 ```
 
@@ -133,13 +130,13 @@ if response?.policy == .userChoice {
         /* Abort sending recorded file */
         response?.abort()
     }))
-    self.present(controller, animated: true, completion: {})             
+    self.present(controller, animated: true, completion: {})
 }
 ```
 
 ### Stop recording ###
 
-This will override policy that was set in 
+This will override policy that was set in
 
 ```swift
 VoiceRecordStrategy.maxRecordDurationPolicy
