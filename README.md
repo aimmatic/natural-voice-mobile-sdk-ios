@@ -2,18 +2,13 @@
 
 This library allows you to integrate Natural Voice functions into your iOS app.
 
-Requires API key. For a free API key you may contact our solution desk.
+Requires API key. For an API key you may contact our solution desk.
 
 https://www.aimmatic.com/solution-desk.html
 
 mailto:solution.desk@aimmatic.com
 
-Please allow a few hours for a response.
-
-# Feature #
-
-Example:
-- [Natural Voice Mobile](http://www.aimmatic.com/natural-voice.html)
+Please allow up to 24 hours for a response.
 
 # Usage #
 
